@@ -1,0 +1,45 @@
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: medprotocol
+      POSTGRES_USER: medprotocol
+      POSTGRES_PASSWORD: medprotocol
+    ports:
+      - "5432:5432"
+    volumes:
+      - medprotocol_postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U medprotocol -d medprotocol"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      MEDPROTOCOL_DATABASE_URL: postgresql+psycopg://medprotocol:medprotocol@postgres:5432/medprotocol
+      MEDPROTOCOL_ENVIRONMENT: local-demo
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3).read()",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+volumes:
+  medprotocol_postgres_data:

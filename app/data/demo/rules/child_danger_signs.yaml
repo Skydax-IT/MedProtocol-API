@@ -1,0 +1,39 @@
+rule_id: demo_child_danger_001
+protocol_id: demo_child_danger_signs
+protocol_version: DEMO_DRAFT_NOT_VALIDATED
+priority: 100
+module: child_triage
+patient_group: child_0_59_months
+status: draft
+validation_status: demo_only
+clinical_use_status: not_for_real_patient_care
+real_care_validation_status: not_validated_for_real_care
+condition:
+  all:
+    - path: patient_context.age_months
+      operator: greater_or_equal
+      value: 0
+    - path: patient_context.age_months
+      operator: less_or_equal
+      value: 59
+    - any:
+        - path: clinical_inputs.danger_signs.convulsions
+          operator: equals
+          value: true
+        - path: clinical_inputs.danger_signs.lethargy_or_unconscious
+          operator: equals
+          value: true
+        - path: clinical_inputs.danger_signs.unable_to_drink_or_breastfeed
+          operator: equals
+          value: true
+result:
+  urgency_level: urgent_referral
+  referral_required: true
+  action_code: urgent_referral
+  reason_code: demo_child_danger_signs_detected
+  possible_suspicions:
+    - "Situation potentiellement grave à évaluer — démo, pas un diagnostic."
+safety:
+  allow_medication: false
+  allow_dosage: false
+  allow_diagnosis: false

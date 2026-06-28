@@ -1,0 +1,43 @@
+{
+  "patient_context": {
+    "patient_ref": null,
+    "age_months": 24,
+    "sex": "female",
+    "pregnancy_status": "not_applicable"
+  },
+  "encounter_context": {
+    "country_code": "CF",
+    "region_code": null,
+    "setting": "rural_health_post",
+    "user_role": "community_health_worker",
+    "connectivity": "offline_capable",
+    "language": "fr"
+  },
+  "clinical_inputs": {
+    "main_complaint": "fever",
+    "duration_days": 2,
+    "danger_signs": {
+      "convulsions": false,
+      "lethargy_or_unconscious": true,
+      "unable_to_drink_or_breastfeed": true,
+      "respiratory_distress": false,
+      "severe_bleeding": false
+    },
+    "vitals": {
+      "temperature_c": 39.2,
+      "respiratory_rate": null,
+      "heart_rate": null
+    }
+  },
+  "resources_available": {
+    "referral_transport_available": false,
+    "phone_network_available": true,
+    "rapid_malaria_test_available": true,
+    "ors_available": true
+  },
+  "client_context": {
+    "external_encounter_id": "external-demo-001",
+    "channel": "tablet_app",
+    "client_timestamp": "2026-06-28T12:00:00Z"
+  }
+}

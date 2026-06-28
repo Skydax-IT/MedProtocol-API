@@ -1,0 +1,39 @@
+rule_id: demo_pregnancy_danger_001
+protocol_id: demo_pregnancy_danger_signs
+protocol_version: DEMO_DRAFT_NOT_VALIDATED
+priority: 100
+module: pregnancy_triage
+patient_group: pregnant_person
+status: draft
+validation_status: demo_only
+clinical_use_status: not_for_real_patient_care
+real_care_validation_status: not_validated_for_real_care
+condition:
+  all:
+    - path: patient_context.pregnancy_status
+      operator: equals
+      value: pregnant
+    - any:
+        - path: clinical_inputs.danger_signs.severe_bleeding
+          operator: equals
+          value: true
+        - path: clinical_inputs.danger_signs.convulsions
+          operator: equals
+          value: true
+        - path: clinical_inputs.danger_signs.severe_abdominal_pain
+          operator: equals
+          value: true
+        - path: clinical_inputs.danger_signs.severe_headache_or_visual_disturbance
+          operator: equals
+          value: true
+result:
+  urgency_level: urgent_referral
+  referral_required: true
+  action_code: urgent_referral
+  reason_code: demo_pregnancy_danger_signs_detected
+  possible_suspicions:
+    - "Urgence obstétricale possible à évaluer — démo, pas un diagnostic."
+safety:
+  allow_medication: false
+  allow_dosage: false
+  allow_diagnosis: false

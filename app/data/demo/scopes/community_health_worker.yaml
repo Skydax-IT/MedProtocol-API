@@ -1,0 +1,18 @@
+role: community_health_worker
+display_name: Agent de santé communautaire
+allowed_action_categories:
+  - identify_danger_signs
+  - recommend_referral
+  - ask_missing_questions
+  - provide_simple_explanation
+forbidden_action_categories:
+  - diagnosis_confirmation
+  - prescription
+  - dosage
+  - invasive_procedure
+  - advanced_clinical_assessment
+output_constraints:
+  max_sms_chars: 160
+  avoid_terms:
+    - diagnostic certain
+    - traitement définitif

@@ -1,0 +1,14 @@
+country_code: CF
+country_name: Central African Republic
+status: demo
+languages:
+  - fr
+enabled_modules:
+  - general_triage
+  - child_triage
+  - pregnancy_triage
+clinical_use_status: not_for_real_patient_care
+referral_wording:
+  fr: "Référer immédiatement vers une structure de santé appropriée selon le circuit local."
+notes:
+  - "Demo pack only. Requires national validation before any real use."
