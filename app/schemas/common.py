@@ -45,6 +45,10 @@ class ReadinessResponse(StrictBaseModel):
 class VersionResponse(StrictBaseModel):
     service: str
     version: str
+    api_version: str
+    demo_version: str
+    product_stage: str
+    clinical_status: str
     commit: str
     environment: str
 

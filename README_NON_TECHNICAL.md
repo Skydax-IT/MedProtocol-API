@@ -43,15 +43,15 @@ http://localhost:8000
 You should see a banner:
 
 ```text
-DEMO ONLY — NOT FOR REAL PATIENT CARE
+Demo only — not for real patient care
 ```
 
-The landing page explains the project in business language. It should be understandable without knowing Python, Docker, APIs, Swagger, JSON, or database terms.
+The landing page is now a polished product overview. It should be understandable without knowing Python, Docker, APIs, Swagger, JSON, or database terms.
 
 Click:
 
 ```text
-View guided demo
+Try the guided demo
 ```
 
 Or open the guided demo directly:
@@ -96,6 +96,15 @@ ReDoc is another documentation view:
 http://localhost:8000/redoc
 
 You do not need to understand these pages to test the business overview or guided demo.
+
+## Version Labels
+
+The site separates technical and demo labels:
+
+- API version: `0.1.0`
+- Demo UX version: `0.4.0`
+- Product stage: prototype
+- Clinical status: demo only, not validated for real care
 
 ## Stop the Demo
 

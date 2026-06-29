@@ -5,16 +5,20 @@ Use this before sharing the local or online demo with non-technical reviewers.
 ## Public Overview
 
 - [ ] The warning banner is visible on `/`.
-- [ ] The homepage explains the product in under 60 seconds.
+- [ ] The homepage feels polished, modern, and credible for non-technical stakeholders.
+- [ ] The homepage explains the product in under 30-60 seconds.
 - [ ] The positioning is clear: `A protocol-based triage layer for frontline health systems`.
 - [ ] The page does not require understanding Swagger, endpoints, JSON, or API keys.
+- [ ] The hero shows a clean field observation → API engine → triage output visual flow.
 - [ ] The integration story is clear.
+- [ ] API version and demo UX version are separated clearly.
 - [ ] The page does not claim medical validation.
 - [ ] The page does not claim real clinical readiness.
 
 ## Guided Demo
 
 - [ ] `/guided-demo` loads.
+- [ ] It feels like a product walkthrough, not a developer tool.
 - [ ] Fake cases are clearly marked as demonstration only.
 - [ ] The guided demo works without typing real information.
 - [ ] JSON is hidden by default in a developer details section.

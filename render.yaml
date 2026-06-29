@@ -19,6 +19,14 @@ services:
         sync: false
       - key: DEMO_TENANT_ID
         value: tenant_demo
+      - key: APP_VERSION
+        value: "0.1.0"
+      - key: DEMO_UX_VERSION
+        value: "0.4.0"
+      - key: PRODUCT_STAGE
+        value: prototype
+      - key: CLINICAL_STATUS
+        value: demo_only_not_validated
       - key: CORS_ALLOWED_ORIGINS
         sync: false
       - key: LOG_LEVEL

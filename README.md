@@ -5,7 +5,7 @@
 1. Open Docker Desktop and wait until it is running.
 2. Run `./scripts/demo_start.sh` or double-click `start_demo.command`.
 3. Open `http://localhost:8000`.
-4. Click `Open Demo UI`.
+4. Click `Try the guided demo`.
 5. Stop with `./scripts/demo_stop.sh` or double-click `stop_demo.command`.
 
 Useful founder-facing docs:
@@ -32,7 +32,14 @@ All bundled clinical rules are seed demo rules marked:
 - `real_care_validation_status: not_validated_for_real_care`
 - `protocol_version: DEMO_DRAFT_NOT_VALIDATED`
 
-The MVP demonstrates architecture, deterministic rule evaluation, role-based output adaptation, auditability, tenant-aware API access, and future offline bundle patterns.
+The MVP demonstrates architecture, deterministic rule evaluation, role-based output adaptation, auditability, tenant-aware API access, a polished business demo experience, and future offline bundle patterns.
+
+Version labels are intentionally separate:
+
+- API version: `0.1.0`
+- Demo UX version: `0.4.0`
+- Product stage: `prototype`
+- Clinical status: `demo_only_not_validated`
 
 ## Stack
 

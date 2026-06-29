@@ -17,7 +17,7 @@ def test_settings_support_online_demo_environment_names(monkeypatch: pytest.Monk
     assert settings.demo_mode is True
     assert settings.database_url == "sqlite+pysqlite:///:memory:"
     assert settings.demo_tenant_slug == "tenant_demo_online"
-    assert settings.demo_label == "v0.1.0 hosted demo mode"
+    assert settings.demo_label == "v0.4.0 polished hosted demo"
 
 
 def test_settings_can_load_without_env_file() -> None:
