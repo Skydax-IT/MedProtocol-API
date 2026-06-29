@@ -7,7 +7,11 @@ import pytest
 from fastapi.testclient import TestClient
 
 os.environ["MEDPROTOCOL_DATABASE_URL"] = "sqlite+pysqlite:///:memory:"
+os.environ["DATABASE_URL"] = "sqlite+pysqlite:///:memory:"
 os.environ["MEDPROTOCOL_DEMO_API_KEY"] = "mp_test_demo_local_only_change_me"
+os.environ["DEMO_API_KEY"] = "mp_test_demo_local_only_change_me"
+os.environ["APP_ENV"] = "local"
+os.environ["API_KEY_PEPPER"] = ""
 
 from app.infrastructure.database import Base, SessionLocal, engine  # noqa: E402
 from app.infrastructure.models import APIKeyModel, TenantModel  # noqa: E402

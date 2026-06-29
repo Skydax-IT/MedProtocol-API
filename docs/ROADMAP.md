@@ -16,7 +16,7 @@
 ## Next Engineering Work
 
 - Add CI.
-- Add deployment manifests.
+- Test the v0.2 hosted demo preparation on Render/Neon.
 - Add real key rotation workflows.
 - Add Redis-backed rate limiting.
 - Add structured audit export.
@@ -29,4 +29,3 @@
 - Safety case and hazard analysis.
 - Localization and field usability testing.
 - Monitoring and incident response process.
-

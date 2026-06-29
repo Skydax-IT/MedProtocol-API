@@ -6,6 +6,7 @@ from datetime import UTC, datetime
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.config import get_settings
 from app.infrastructure.models import APIKeyModel, TenantModel
 from app.infrastructure.security.hashing import api_key_prefix, verify_api_key
 
@@ -22,6 +23,7 @@ class AuthenticatedTenant:
 
 class APIKeyRepository:
     def authenticate(self, session: Session, raw_key: str) -> AuthenticatedTenant | None:
+        settings = get_settings()
         prefix = api_key_prefix(raw_key)
         key = (
             session.execute(
@@ -37,7 +39,7 @@ class APIKeyRepository:
         now = datetime.now(UTC)
         if key.expires_at is not None and key.expires_at <= now:
             return None
-        if not verify_api_key(raw_key, key.key_hash):
+        if not verify_api_key(raw_key, key.key_hash, pepper=settings.api_key_pepper):
             return None
         tenant = session.get(TenantModel, key.tenant_id)
         if tenant is None or tenant.status != "active":

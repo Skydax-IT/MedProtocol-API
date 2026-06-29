@@ -1,5 +1,9 @@
 # MedProtocol API v0.1 — Local Demo MVP
 
+Release tag: `v0.1.0-local-demo`
+
+Checkpoint purpose: preserve the local Docker demo MVP before v0.2 hosted-demo preparation begins.
+
 ## What Is Working
 
 - Docker Compose starts PostgreSQL and the FastAPI API.
@@ -10,6 +14,7 @@
 - `http://localhost:8000/docs` shows Swagger/OpenAPI docs.
 - Demo triage evaluation creates an audit record.
 - Tests and lint run inside Docker.
+- `make check` verifies local health, demo pages, docs, Docker, tests, and Git status.
 
 ## What The Demo Proves
 
@@ -77,4 +82,3 @@
 - Incident response and audit-retention policies.
 - Partner training and pilot governance.
 - Written approval from qualified clinical and operational stakeholders.
-

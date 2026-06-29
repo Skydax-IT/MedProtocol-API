@@ -34,6 +34,27 @@ Expected:
 
 The timestamp value will vary.
 
+## Readiness Endpoint Test
+
+Open:
+
+http://localhost:8000/ready
+
+Expected:
+
+```json
+{
+  "status": "ready",
+  "service": "medprotocol-api",
+  "environment": "local",
+  "checks": {
+    "api": "ok",
+    "database": "ok",
+    "demo_rules": "ok"
+  }
+}
+```
+
 ## Demo UI Test
 
 Open the landing page:

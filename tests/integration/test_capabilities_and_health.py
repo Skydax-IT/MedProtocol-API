@@ -10,6 +10,20 @@ def test_health_is_public(client: TestClient) -> None:
     assert response.json()["status"] == "ok"
 
 
+def test_ready_checks_database_and_demo_rules(client: TestClient) -> None:
+    response = client.get("/ready")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["status"] == "ready"
+    assert body["environment"] == "local"
+    assert body["checks"] == {
+        "api": "ok",
+        "database": "ok",
+        "demo_rules": "ok",
+    }
+
+
 def test_landing_page_is_public(client: TestClient) -> None:
     response = client.get("/")
 
@@ -17,6 +31,9 @@ def test_landing_page_is_public(client: TestClient) -> None:
     assert "MedProtocol API" in response.text
     assert "DEMO ONLY" in response.text
     assert "Open Demo UI" in response.text
+    assert "Do not enter real patient data" in response.text
+    assert "ready for real patient care" not in response.text.lower()
+    assert "safe for real patient care" not in response.text.lower()
 
 
 def test_demo_page_is_public_and_safety_marked(client: TestClient) -> None:
@@ -27,6 +44,8 @@ def test_demo_page_is_public_and_safety_marked(client: TestClient) -> None:
     assert "Do not enter real patient data" in response.text
     assert "Copy JSON response" in response.text
     assert "View audit record" in response.text
+    assert "ready for real patient care" not in response.text.lower()
+    assert "safe for real patient care" not in response.text.lower()
 
 
 def test_capabilities_require_auth(client: TestClient) -> None:

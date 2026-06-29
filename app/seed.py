@@ -46,14 +46,14 @@ def seed() -> None:
             key = APIKeyModel(
                 tenant_id=tenant.id,
                 key_prefix=prefix,
-                key_hash=hash_api_key(settings.demo_api_key),
+                key_hash=hash_api_key(settings.demo_api_key, pepper=settings.api_key_pepper),
                 name="Local demo key",
                 status="active",
             )
             session.add(key)
         else:
             key.tenant_id = tenant.id
-            key.key_hash = hash_api_key(settings.demo_api_key)
+            key.key_hash = hash_api_key(settings.demo_api_key, pepper=settings.api_key_pepper)
             key.status = "active"
             key.revoked_at = None
         session.commit()

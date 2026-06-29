@@ -35,6 +35,13 @@ class HealthResponse(StrictBaseModel):
     timestamp: str
 
 
+class ReadinessResponse(StrictBaseModel):
+    status: str
+    service: str
+    environment: str
+    checks: dict[str, str]
+
+
 class VersionResponse(StrictBaseModel):
     service: str
     version: str

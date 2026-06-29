@@ -22,8 +22,10 @@ services:
     env_file:
       - .env
     environment:
-      MEDPROTOCOL_DATABASE_URL: postgresql+psycopg://medprotocol:medprotocol@postgres:5432/medprotocol
-      MEDPROTOCOL_ENVIRONMENT: local-demo
+      APP_ENV: local
+      DEMO_MODE: "true"
+      DATABASE_URL: postgresql+psycopg://medprotocol:medprotocol@postgres:5432/medprotocol
+      CORS_ALLOWED_ORIGINS: http://localhost:8000,http://127.0.0.1:8000
     ports:
       - "8000:8000"
     depends_on:

@@ -16,6 +16,9 @@ Useful founder-facing docs:
 - [MILESTONE_V0_1_LOCAL_DEMO.md](MILESTONE_V0_1_LOCAL_DEMO.md)
 - [FOUNDER_NEXT_STEPS.md](FOUNDER_NEXT_STEPS.md)
 - [docs/SCREENSHOT_GUIDE.md](docs/SCREENSHOT_GUIDE.md)
+- [docs/ENVIRONMENT_VARIABLES.md](docs/ENVIRONMENT_VARIABLES.md)
+- [docs/DEPLOYMENT_RENDER_NEON.md](docs/DEPLOYMENT_RENDER_NEON.md)
+- [docs/ONLINE_DEMO_CHECKLIST.md](docs/ONLINE_DEMO_CHECKLIST.md)
 - [ROADMAP.md](ROADMAP.md)
 - [SECURITY_AND_PRIVACY_NOTES.md](SECURITY_AND_PRIVACY_NOTES.md)
 
@@ -84,6 +87,7 @@ Change it before any shared environment. The key is stored hashed in the databas
 ## Required Endpoints
 
 - `GET /health`
+- `GET /ready`
 - `GET /version`
 - `GET /v1/capabilities`
 - `GET /v1/protocols`
@@ -114,9 +118,9 @@ curl -sS -X POST http://localhost:8000/v1/triage/evaluate \
 ## Tests and Checks
 
 ```bash
-uv run pytest
-uv run ruff check .
-uv run ruff format --check .
+make test
+make lint
+make check
 uv run mypy app
 ```
 

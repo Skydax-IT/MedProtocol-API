@@ -6,6 +6,10 @@ MedProtocol API is a local technical demo of a deterministic, protocol-based tri
 
 This is not a medical product and is not ready for real clinical use.
 
+Release checkpoint: `v0.1.0-local-demo` marks the local demo MVP checkpoint.
+
+Current preparation branch: `v0.2-online-demo-prep` prepares a hosted fake-data demo for feedback only.
+
 ## Implemented
 
 - FastAPI backend with OpenAPI docs.
@@ -23,6 +27,8 @@ This is not a medical product and is not ready for real clinical use.
 - Offline bundle manifest endpoint.
 - Unit, integration, and golden tests.
 - Docker-based test and lint commands.
+- `/ready` readiness endpoint for hosted demo checks.
+- Render/Neon deployment preparation docs.
 
 ## Verified Locally
 
@@ -34,6 +40,7 @@ This is not a medical product and is not ready for real clinical use.
 - Audit lookup works for generated audit IDs.
 - `make test` passes in Docker.
 - `make lint` passes in Docker.
+- `make check` passes locally.
 
 ## Clinical Safety Status
 
@@ -57,7 +64,7 @@ No AI or LLM makes medical decisions.
 - In-memory rate limiting is not production-grade.
 - Demo rules are artificial architecture examples.
 - No clinical validation workflow exists yet.
-- No production deployment pipeline exists yet.
+- No production deployment pipeline exists yet; only hosted demo preparation docs exist.
 - No formal privacy impact assessment has been completed.
 - No real interoperability mapping has been implemented.
 
@@ -79,4 +86,3 @@ No AI or LLM makes medical decisions.
 4. Define a clinical governance process before adding any real protocol content.
 5. Plan partner feedback sessions using fake data only.
 6. Add deployment and operational controls only after the architecture is reviewed.
-

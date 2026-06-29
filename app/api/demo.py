@@ -285,7 +285,7 @@ LANDING_TEMPLATE = Template(
   <main>
     <section class="hero">
       <div>
-        <div class="version-label">v0.1 local demo MVP</div>
+        <div class="version-label">$demo_label</div>
         <h1>MedProtocol API</h1>
         <p class="subtitle">Protocol-based clinical triage API for frontline health systems</p>
         <p>
@@ -303,6 +303,7 @@ LANDING_TEMPLATE = Template(
         <h2>Local Status</h2>
         <div class="status-row"><strong>API status</strong><span class="pill">online</span></div>
         <div class="status-row"><strong>Environment</strong><span>$environment</span></div>
+        <div class="status-row"><strong>Demo mode</strong><span>$demo_mode</span></div>
         <div class="status-row"><strong>API version</strong><span>$version</span></div>
       </aside>
     </section>
@@ -457,7 +458,7 @@ DEMO_TEMPLATE = Template(
 
   <main class="demo-layout">
     <section class="panel">
-      <div class="version-label">v0.1 local demo MVP</div>
+      <div class="version-label">$demo_label</div>
       <h1>Local Demo UI</h1>
       <p>
         Choose a fake case. The page calls the local API with a local demo API key.
@@ -803,7 +804,9 @@ def landing_page() -> HTMLResponse:
     settings = get_settings()
     html = LANDING_TEMPLATE.substitute(
         css=BASE_CSS,
+        demo_label=settings.demo_label,
         environment=settings.environment,
+        demo_mode="enabled" if settings.demo_mode else "disabled",
         version=settings.version,
     )
     return HTMLResponse(content=html)
@@ -814,6 +817,7 @@ def demo_page() -> HTMLResponse:
     settings = get_settings()
     html = DEMO_TEMPLATE.substitute(
         css=BASE_CSS,
+        demo_label=settings.demo_label,
         api_key_json=json.dumps(settings.demo_api_key),
     )
     return HTMLResponse(content=html)

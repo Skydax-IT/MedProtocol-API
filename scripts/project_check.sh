@@ -52,6 +52,12 @@ else
   fail "/health is not reachable"
 fi
 
+if curl -fsS http://localhost:8000/ready >/dev/null 2>&1; then
+  ok "/ready is OK"
+else
+  fail "/ready is not reachable"
+fi
+
 if curl -fsS http://localhost:8000/demo >/dev/null 2>&1; then
   ok "/demo is reachable"
 else

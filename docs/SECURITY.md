@@ -4,6 +4,7 @@
 
 - API-key authentication for `/v1` endpoints.
 - PBKDF2-HMAC-SHA256 hashed API-key storage.
+- Optional provider-managed `API_KEY_PEPPER` can be mixed into API key hashes for hosted environments.
 - Key-prefix lookup without storing plaintext keys.
 - Tenant-country and tenant-module authorization.
 - Tenant-scoped audit retrieval.
