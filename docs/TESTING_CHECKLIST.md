@@ -65,19 +65,30 @@ Expected:
 
 - Product name says `MedProtocol API`.
 - Warning banner says `DEMO ONLY — NOT FOR REAL PATIENT CARE`.
-- Buttons for Demo UI, API Docs, ReDoc, and Health are visible.
+- The positioning says `A protocol-based triage layer for frontline health systems`.
+- The primary button says `View guided demo`.
+- The page explains the field problem and integration approach.
 
 Open:
+
+http://localhost:8000/guided-demo
+
+Expected:
+
+- Banner says `DEMO ONLY — NOT FOR REAL PATIENT CARE`.
+- Fake case cards are visible.
+- Clicking `Child with danger signs` and `Run demo triage` shows `urgent_referral`.
+- An audit ID beginning with `aud_` appears.
+- Technical JSON is hidden by default under developer details.
+
+Technical reviewers can also open:
 
 http://localhost:8000/demo
 
 Expected:
 
-- Banner says `DEMO ONLY — NOT FOR REAL PATIENT CARE`.
-- Warning says `Do not enter real patient data`.
-- Fake case buttons are visible.
-- Clicking `Child with danger signs` shows `urgent_referral`.
-- An audit ID beginning with `aud_` appears.
+- Page title says `Technical Demo Console`.
+- JSON and audit inspection tools are available.
 
 ## Swagger Docs Test
 

@@ -37,16 +37,19 @@ Use this checklist only for a hosted fake-data demo. This is not a clinical pilo
 
 - [ ] `/health` returns OK.
 - [ ] `/ready` returns ready.
-- [ ] `/` loads.
-- [ ] `/demo` loads.
-- [ ] `/docs` loads.
+- [ ] `/` loads as the business overview.
+- [ ] `/` is understandable without Swagger or JSON knowledge.
+- [ ] `/guided-demo` loads for non-technical reviewers.
+- [ ] `/demo` loads as the Technical Demo Console.
+- [ ] `/docs` loads for API/technical review only.
 - [ ] `/redoc` loads.
 - [ ] Warning banner is visible.
 - [ ] Text says `DEMO ONLY — NOT FOR REAL PATIENT CARE`.
-- [ ] Text says not to enter real patient data.
-- [ ] Fake case runs.
+- [ ] Text says no real patient data.
+- [ ] Guided fake case runs.
 - [ ] Audit ID is generated.
-- [ ] Raw JSON section opens.
+- [ ] Raw JSON is hidden by default under technical details.
+- [ ] Technical docs remain accessible but are not the main user experience.
 
 ## Safety Review
 

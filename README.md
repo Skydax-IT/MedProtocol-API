@@ -15,6 +15,7 @@ Useful founder-facing docs:
 - [PROJECT_STATUS.md](PROJECT_STATUS.md)
 - [MILESTONE_V0_1_LOCAL_DEMO.md](MILESTONE_V0_1_LOCAL_DEMO.md)
 - [FOUNDER_NEXT_STEPS.md](FOUNDER_NEXT_STEPS.md)
+- [docs/BUSINESS_DEMO_CHECKLIST.md](docs/BUSINESS_DEMO_CHECKLIST.md)
 - [docs/SCREENSHOT_GUIDE.md](docs/SCREENSHOT_GUIDE.md)
 - [docs/ENVIRONMENT_VARIABLES.md](docs/ENVIRONMENT_VARIABLES.md)
 - [docs/DEPLOYMENT_RENDER_NEON.md](docs/DEPLOYMENT_RENDER_NEON.md)
@@ -57,6 +58,10 @@ For a non-technical local demo on macOS, install Docker Desktop and run:
 Then open:
 
 http://localhost:8000
+
+For non-technical reviewers, open:
+
+http://localhost:8000/guided-demo
 
 More detailed non-technical instructions are in [README_NON_TECHNICAL.md](README_NON_TECHNICAL.md).
 

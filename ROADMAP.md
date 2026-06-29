@@ -30,7 +30,7 @@ Validation criteria:
 
 Goal: make the fake-data demo shareable online for early feedback using free or low-cost hosted services.
 
-Status: underway on `v0.2-online-demo-prep`.
+Status: completed and merged from `v0.2-online-demo-prep`.
 
 What to build:
 
@@ -54,7 +54,35 @@ Validation criteria:
 - Fake cases run and produce audit IDs.
 - No real patient data is used.
 
-## Phase 2 — API Hardening
+## Phase 2 — Business Demo UX
+
+Goal: make the fake-data demo understandable for NGO project managers, public health advisors, clinicians, ministries, funders, and non-technical decision makers.
+
+Status: underway on `v0.3-business-demo-ux`.
+
+What to build:
+
+- Business-oriented overview at `/`.
+- Guided non-technical demo at `/guided-demo`.
+- Technical Demo Console preserved at `/demo`.
+- Technical docs preserved at `/docs` and `/redoc`.
+- Business demo checklist before sharing.
+
+What not to build yet:
+
+- Product dashboard.
+- Real patient workflows.
+- Real clinical protocol content.
+- Claims of medical validation.
+
+Validation criteria:
+
+- Non-technical reviewer can understand the homepage in under 60 seconds.
+- Guided demo works without Swagger, JSON, API keys, or endpoint knowledge.
+- Safety warnings remain visible.
+- Technical review path remains available.
+
+## Phase 3 — API Hardening
 
 Goal: make the API easier for technical partners to review.
 
@@ -76,7 +104,7 @@ Validation criteria:
 - Technical reviewer can run the project and understand the API contract.
 - Security gaps are documented.
 
-## Phase 3 — Medical Protocol Validation Workflow
+## Phase 4 — Medical Protocol Validation Workflow
 
 Goal: define how real protocol content would be authored, reviewed, approved, and versioned.
 
@@ -96,7 +124,7 @@ Validation criteria:
 
 - Clinical governance process is documented before any real protocol is added.
 
-## Phase 4 — Partner/Integrator Feedback
+## Phase 5 — Partner/Integrator Feedback
 
 Goal: test whether the API shape fits NGO, ministry, and digital health workflows.
 
@@ -117,7 +145,7 @@ Validation criteria:
 - Integrators understand how they would call the API.
 - Feedback identifies missing fields or workflow needs.
 
-## Phase 5 — Offline SDK/Bundles
+## Phase 6 — Offline SDK/Bundles
 
 Goal: make offline execution feasible for low-connectivity settings.
 
@@ -138,7 +166,7 @@ Validation criteria:
 - Same input plus same bundle version gives same output.
 - Bundle provenance is clear.
 
-## Phase 6 — Country Packs
+## Phase 7 — Country Packs
 
 Goal: support localized, validated configuration per country.
 
@@ -157,7 +185,7 @@ Validation criteria:
 
 - Each country pack has clear source, approval, version, and expiry metadata.
 
-## Phase 7 — Pilot Readiness
+## Phase 8 — Pilot Readiness
 
 Goal: prepare for a tightly controlled, approved pilot.
 
@@ -180,7 +208,7 @@ Validation criteria:
 - Written approval from qualified clinical and governance stakeholders.
 - Pilot scope and stop criteria are defined.
 
-## Phase 8 — Production Readiness
+## Phase 9 — Production Readiness
 
 Goal: meet operational, security, and governance standards for production use.
 

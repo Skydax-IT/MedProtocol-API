@@ -58,8 +58,14 @@ else
   fail "/ready is not reachable"
 fi
 
+if curl -fsS http://localhost:8000/guided-demo >/dev/null 2>&1; then
+  ok "/guided-demo is reachable"
+else
+  fail "/guided-demo is not reachable"
+fi
+
 if curl -fsS http://localhost:8000/demo >/dev/null 2>&1; then
-  ok "/demo is reachable"
+  ok "/demo technical console is reachable"
 else
   fail "/demo is not reachable"
 fi

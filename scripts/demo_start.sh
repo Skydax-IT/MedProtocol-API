@@ -49,9 +49,10 @@ MedProtocol API local demo is ready.
 
 Open these URLs:
   Landing page: http://localhost:8000
+  Guided demo:  http://localhost:8000/guided-demo
   Health check: http://localhost:8000/health
   Readiness:    http://localhost:8000/ready
-  Demo UI:      http://localhost:8000/demo
+  Technical demo console: http://localhost:8000/demo
   Swagger docs: http://localhost:8000/docs
   ReDoc docs:   http://localhost:8000/redoc
 

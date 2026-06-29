@@ -84,6 +84,7 @@ Do not use the local demo key online.
 
 ```text
 /
+/guided-demo
 /health
 /ready
 /demo
@@ -122,21 +123,26 @@ It does not seed real patient data.
 Open these URLs using your Render public HTTPS URL:
 
 ```text
+https://your-render-service.onrender.com/
+https://your-render-service.onrender.com/guided-demo
 https://your-render-service.onrender.com/health
 https://your-render-service.onrender.com/ready
-https://your-render-service.onrender.com/
 https://your-render-service.onrender.com/demo
 https://your-render-service.onrender.com/docs
 https://your-render-service.onrender.com/redoc
 ```
 
-Then run one fake case in `/demo` and confirm:
+Start with `/`. It should immediately explain MedProtocol API in business language for non-technical reviewers.
+
+Then run one fake case in `/guided-demo` and confirm:
 
 - warning banner is visible;
 - no real patient data is requested;
 - a fake result appears;
 - an audit ID is generated;
-- raw JSON can be opened.
+- raw JSON is hidden by default under technical details.
+
+Use `/docs` only for API or technical review. Use `/demo` only as the Technical Demo Console for developers.
 
 ## 7. Stop or Delete the Online Demo
 

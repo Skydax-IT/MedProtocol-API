@@ -46,28 +46,27 @@ You should see a banner:
 DEMO ONLY — NOT FOR REAL PATIENT CARE
 ```
 
+The landing page explains the project in business language. It should be understandable without knowing Python, Docker, APIs, Swagger, JSON, or database terms.
+
 Click:
 
 ```text
-Open Demo UI
+View guided demo
 ```
 
-Or open the demo page directly:
+Or open the guided demo directly:
 
-http://localhost:8000/demo
+http://localhost:8000/guided-demo
 
-## Test Fake Cases
+## Test Fake Guided Cases
 
-On the demo page, click the fake case buttons:
+On the guided demo page, click a fake case, then click `Run demo triage`:
 
 - Child with danger signs
-- Child without danger signs
 - Pregnant woman with danger signs
 - Missing critical data
-- Community health worker scope
-- Nurse scope
 
-Each click should show:
+Each run should show:
 
 - urgency level;
 - referral required yes/no;
@@ -75,13 +74,18 @@ Each click should show:
 - danger signs detected;
 - missing critical data;
 - short SMS/USSD message;
-- protocol and rule metadata;
-- audit ID;
-- raw JSON response.
+- why the output was generated;
+- traceability details.
 
 Only use the fake cases. Do not type or paste real patient information anywhere.
 
-## Open Swagger Docs
+## Technical Pages
+
+Most non-technical reviewers do not need these pages.
+
+The Technical Demo Console is for developers and technical reviewers:
+
+http://localhost:8000/demo
 
 Swagger is the technical API documentation page:
 
@@ -91,7 +95,7 @@ ReDoc is another documentation view:
 
 http://localhost:8000/redoc
 
-You do not need to understand these pages to test the simple demo UI.
+You do not need to understand these pages to test the business overview or guided demo.
 
 ## Stop the Demo
 

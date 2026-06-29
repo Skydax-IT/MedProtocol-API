@@ -2,13 +2,13 @@
 
 ## Current MVP Status
 
-MedProtocol API is a local technical demo of a deterministic, protocol-based triage API. It is designed to show architecture, integration patterns, auditability, versioned demo rules, role-based output adaptation, and offline bundle concepts.
+MedProtocol API is a local and online-demo-ready prototype of a deterministic, protocol-based triage API. It is designed to show architecture, integration patterns, auditability, versioned demo rules, role-based output adaptation, and offline bundle concepts.
 
 This is not a medical product and is not ready for real clinical use.
 
 Release checkpoint: `v0.1.0-local-demo` marks the local demo MVP checkpoint.
 
-Current preparation branch: `v0.2-online-demo-prep` prepares a hosted fake-data demo for feedback only.
+Current product step: `v0.3-business-demo-ux` makes the public demo understandable for non-technical stakeholders before online sharing.
 
 ## Implemented
 
@@ -16,8 +16,9 @@ Current preparation branch: `v0.2-online-demo-prep` prepares a hosted fake-data 
 - Docker Compose local environment with PostgreSQL and API containers.
 - One-command demo scripts for start, stop, reset, and logs.
 - Mac double-click command files for non-technical local use.
-- Local landing page at `http://localhost:8000`.
-- Browser demo page at `http://localhost:8000/demo`.
+- Business-oriented overview at `http://localhost:8000`.
+- Guided non-technical demo at `http://localhost:8000/guided-demo`.
+- Technical Demo Console at `http://localhost:8000/demo`.
 - Demo-only deterministic rule engine.
 - Demo country packs for `CF` and `TD`.
 - Demo scopes for community health worker, nurse, midwife, and doctor.
@@ -29,13 +30,15 @@ Current preparation branch: `v0.2-online-demo-prep` prepares a hosted fake-data 
 - Docker-based test and lint commands.
 - `/ready` readiness endpoint for hosted demo checks.
 - Render/Neon deployment preparation docs.
+- Business demo checklist for pre-sharing review.
 
 ## Verified Locally
 
 - Docker build/start works.
 - `http://localhost:8000/health` returns OK.
-- `http://localhost:8000` loads the landing page.
-- `http://localhost:8000/demo` loads the browser demo.
+- `http://localhost:8000` loads the business overview.
+- `http://localhost:8000/guided-demo` loads the guided demo.
+- `http://localhost:8000/demo` loads the Technical Demo Console.
 - Fake demo cases return structured triage responses.
 - Audit lookup works for generated audit IDs.
 - `make test` passes in Docker.
@@ -80,9 +83,9 @@ No AI or LLM makes medical decisions.
 
 ## Next Recommended Steps
 
-1. Keep the demo local and fake-data-only.
-2. Share the repository with a technical reviewer.
-3. Review API design, security model, and audit model.
-4. Define a clinical governance process before adding any real protocol content.
-5. Plan partner feedback sessions using fake data only.
+1. Keep all demos fake-data-only.
+2. Use `/` for the business overview and `/guided-demo` for non-technical review.
+3. Use `/docs` and `/demo` only for technical review.
+4. Collect feedback from NGO, clinical, ministry, and integrator stakeholders.
+5. Define a clinical governance process before adding any real protocol content.
 6. Add deployment and operational controls only after the architecture is reviewed.

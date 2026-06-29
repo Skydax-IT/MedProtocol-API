@@ -26,30 +26,32 @@ http://localhost:8000
 
 Say:
 
-> MedProtocol API is an API-first, deterministic protocol engine for frontline health system integrations. This is not a medical chatbot and not a clinical product. It is a demo environment using fake, non-validated rules.
+> MedProtocol API is a protocol-based triage layer for frontline health systems. It helps existing field tools apply structured triage rules, detect danger signs first, adapt output by health worker role, and keep an audit trail.
 
 Point out:
 
 - `DEMO ONLY — NOT FOR REAL PATIENT CARE`;
 - no real patient data;
 - no validated clinical protocol;
-- links to Demo UI, API Docs, ReDoc, and Health.
+- no diagnosis or treatment recommendation;
+- the `View guided demo` button;
+- the integration story showing field tools, MedProtocol API, triage output, and audit trail.
 
-## 3. Open the Demo UI
+## 3. Open the Guided Demo
 
 Click:
 
 ```text
-Open Demo UI
+View guided demo
 ```
 
 Or open:
 
-http://localhost:8000/demo
+http://localhost:8000/guided-demo
 
 Say:
 
-> These are predefined fake cases. I will not enter any real patient information.
+> This page is for non-technical reviewers. It shows what a field app might send, what the API does, what comes back, and why the result is traceable.
 
 ## 4. First Case to Click
 
@@ -59,9 +61,15 @@ Click:
 Child with danger signs
 ```
 
+Then click:
+
+```text
+Run demo triage
+```
+
 Say:
 
-> This fake case demonstrates danger-sign-first triage. The API classifies urgency before returning any action text.
+> This fake case demonstrates danger-sign-first triage. The API classifies urgency before returning any action text. It is not making a diagnosis.
 
 ## 5. Explain the Result
 
@@ -73,43 +81,51 @@ Point to:
 - danger signs detected;
 - missing critical data;
 - short SMS/USSD message;
-- protocol and rule metadata.
+- why the output was generated.
 
 Say:
 
-> The output includes the demo rule ID and protocol version so an integrator can audit why the response happened. It is not a diagnosis and does not include medication or dosage.
+> The result is written in simple language first. Technical details are hidden by default so non-technical reviewers do not need to understand JSON or Swagger.
 
-## 6. Show the Audit ID
+## 6. Show Traceability
 
 Point to:
 
 ```text
-Audit ID
+Step 3 — Traceability
 ```
 
 Say:
 
-> Every evaluation creates an audit record. This is important for traceability, governance, and later safety review.
+> Every evaluation creates an audit record and includes the demo rule ID, protocol version, validation status, user role, and demo-only status. This is important for traceability, governance, and later safety review.
 
 Click:
 
 ```text
-View audit record
+Technical details for developers
 ```
 
 Say:
 
-> The audit record shows the normalized input, triggered rules, missing data, output shown, and protocol metadata.
+> Developers can inspect the raw JSON response, audit record, and endpoint used, but this is not required for the business demo.
 
-## 7. Show API Docs
+## 7. Optional Technical Review
 
 Open:
+
+http://localhost:8000/demo
+
+Say:
+
+> This is the Technical Demo Console for developers and technical reviewers who want JSON, audit IDs, and API testing.
+
+Then open:
 
 http://localhost:8000/docs
 
 Say:
 
-> This is API-first. A partner system such as a field app, SMS/USSD gateway, DHIS2/OpenMRS-like system, or NGO tool would call these endpoints.
+> Swagger is the technical API documentation. A partner system such as a field app, SMS/USSD gateway, DHIS2/OpenMRS-like system, or NGO tool would call these endpoints, but non-technical reviewers do not need to use this page.
 
 ## 8. Explain What It Is Not
 
@@ -136,4 +152,3 @@ Or double-click:
 ```text
 stop_demo.command
 ```
-

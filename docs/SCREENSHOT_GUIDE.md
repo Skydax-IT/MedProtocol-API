@@ -2,7 +2,7 @@
 
 Take screenshots using fake data only. Do not enter real patient data.
 
-## Landing Page
+## Business Overview Page
 
 URL:
 
@@ -12,12 +12,55 @@ http://localhost:8000
 
 What it demonstrates:
 
-- Professional local demo entry point.
+- Business-oriented demo entry point.
 - Product name and positioning.
 - Demo-only safety banner.
-- Links to demo UI, API docs, ReDoc, and health check.
+- Field problem, MedProtocol approach, safety-by-design, and integration story.
+- Clear path to `View guided demo`.
 
-## Demo UI Before Running a Case
+## Guided Demo Before Running a Case
+
+URL:
+
+```text
+http://localhost:8000/guided-demo
+```
+
+What it demonstrates:
+
+- Non-technical reviewers do not need Swagger, JSON, or API keys.
+- Fake story cases are predefined.
+- No real patient data entry is needed.
+- Safety warnings remain visible.
+
+## Guided Demo Result After Child Danger Signs Case
+
+Action:
+
+Click `Child with danger signs`, then click `Run demo triage`.
+
+What it demonstrates:
+
+- Deterministic urgent referral output from fake demo danger signs.
+- Danger signs detected.
+- Missing critical data.
+- SMS/USSD-ready summary.
+- Plain-language explanation of why the output was generated.
+- Traceability fields without making the user read JSON.
+
+## Technical Details Section
+
+Action:
+
+After running a guided case, expand `Technical details for developers`.
+
+What it demonstrates:
+
+- Every evaluation creates an audit trail.
+- The API records triggered rules, missing data, normalized inputs, and output shown.
+- JSON and audit records are available for technical review but hidden by default.
+
+## Technical Demo Console
 
 URL:
 
@@ -27,36 +70,8 @@ http://localhost:8000/demo
 
 What it demonstrates:
 
-- Fake cases are predefined.
-- No real patient data entry is needed.
-- Safety warnings remain visible.
-
-## Demo Result After Child Danger Signs Case
-
-Action:
-
-Click `Child with danger signs`.
-
-What it demonstrates:
-
-- Deterministic urgent referral output from fake demo danger signs.
-- Danger signs detected.
-- Missing critical data.
-- SMS/USSD-ready summary.
-- Protocol/rule metadata.
-- Audit ID.
-
-## Audit JSON Section
-
-Action:
-
-After running a case, click `View audit record`.
-
-What it demonstrates:
-
-- Every evaluation creates an audit trail.
-- The API records triggered rules, missing data, normalized inputs, and output shown.
-- Auditability is part of the architecture.
+- Developers and technical reviewers can still inspect JSON, audit IDs, and raw responses.
+- The technical console is not the main non-technical experience.
 
 ## Swagger Docs
 
@@ -101,4 +116,3 @@ What they demonstrate:
 - Clear limitations.
 - Practical next steps.
 - Safety-aware path before any real pilot.
-
