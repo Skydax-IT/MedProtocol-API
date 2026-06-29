@@ -26,23 +26,24 @@ http://localhost:8000
 
 Say:
 
-> MedProtocol API is a protocol-based triage layer for frontline health systems. It helps existing field tools apply structured triage rules, detect danger signs first, adapt output by health worker role, and keep an audit trail.
+> MedProtocol API is a protocol-based triage layer for frontline health systems. This polished demo shows how existing field tools could call deterministic protocol logic and receive traceable triage outputs.
 
 Point out:
 
-- `DEMO ONLY — NOT FOR REAL PATIENT CARE`;
+- `Demo only — not for real patient care`;
 - no real patient data;
 - no validated clinical protocol;
 - no diagnosis or treatment recommendation;
-- the `View guided demo` button;
+- the `Try the guided demo` button;
 - the integration story showing field tools, MedProtocol API, triage output, and audit trail.
+- the version labels: API version `0.1.0`, demo UX version `0.4.0`, product stage `Prototype`, clinical status `Demo only`.
 
 ## 3. Open the Guided Demo
 
 Click:
 
 ```text
-View guided demo
+Try the guided demo
 ```
 
 Or open:

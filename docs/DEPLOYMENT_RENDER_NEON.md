@@ -132,7 +132,7 @@ https://your-render-service.onrender.com/docs
 https://your-render-service.onrender.com/redoc
 ```
 
-Start with `/`. It should immediately explain MedProtocol API in business language for non-technical reviewers.
+Start with `/`. It should immediately explain MedProtocol API as a polished business/product overview for non-technical reviewers.
 
 Then run one fake case in `/guided-demo` and confirm:
 
@@ -143,6 +143,13 @@ Then run one fake case in `/guided-demo` and confirm:
 - raw JSON is hidden by default under technical details.
 
 Use `/docs` only for API or technical review. Use `/demo` only as the Technical Demo Console for developers.
+
+The public site should show separate labels:
+
+- API version: `0.1.0`
+- Demo UX version: `0.4.0`
+- Product stage: prototype
+- Clinical status: demo only, not validated for real care
 
 ## 7. Stop or Delete the Online Demo
 

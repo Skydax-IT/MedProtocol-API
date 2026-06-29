@@ -20,6 +20,18 @@ class Settings(BaseSettings):
         default="0.1.0",
         validation_alias=AliasChoices("APP_VERSION", "MEDPROTOCOL_VERSION"),
     )
+    demo_version: str = Field(
+        default="0.4.0",
+        validation_alias=AliasChoices("DEMO_UX_VERSION", "MEDPROTOCOL_DEMO_UX_VERSION"),
+    )
+    product_stage: str = Field(
+        default="prototype",
+        validation_alias=AliasChoices("PRODUCT_STAGE", "MEDPROTOCOL_PRODUCT_STAGE"),
+    )
+    clinical_status: str = Field(
+        default="demo_only_not_validated",
+        validation_alias=AliasChoices("CLINICAL_STATUS", "MEDPROTOCOL_CLINICAL_STATUS"),
+    )
     commit: str = Field(
         default="local-dev",
         validation_alias=AliasChoices("APP_COMMIT", "MEDPROTOCOL_COMMIT", "RENDER_GIT_COMMIT"),
@@ -109,10 +121,10 @@ class Settings(BaseSettings):
     @property
     def demo_label(self) -> str:
         if self.app_env == "demo":
-            return f"v{self.version} hosted demo mode"
+            return f"v{self.demo_version} polished hosted demo"
         if self.app_env == "production":
-            return f"v{self.version} production config - clinical use disabled"
-        return f"v{self.version} local demo MVP"
+            return f"v{self.demo_version} prototype config - clinical use disabled"
+        return f"v{self.demo_version} polished business demo"
 
 
 @lru_cache(maxsize=1)

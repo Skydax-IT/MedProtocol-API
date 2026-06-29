@@ -14,6 +14,10 @@ def version() -> VersionResponse:
     return VersionResponse(
         service=settings.service_name,
         version=settings.version,
+        api_version=settings.version,
+        demo_version=settings.demo_version,
+        product_stage=settings.product_stage,
+        clinical_status=settings.clinical_status,
         commit=settings.commit,
         environment=settings.environment,
     )

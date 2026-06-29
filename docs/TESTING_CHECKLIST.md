@@ -55,7 +55,7 @@ Expected:
 }
 ```
 
-## Demo UI Test
+## Public Website and Guided Demo Test
 
 Open the landing page:
 
@@ -64,10 +64,10 @@ http://localhost:8000
 Expected:
 
 - Product name says `MedProtocol API`.
-- Warning banner says `DEMO ONLY — NOT FOR REAL PATIENT CARE`.
+- Warning banner says `Demo only — not for real patient care`.
 - The positioning says `A protocol-based triage layer for frontline health systems`.
-- The primary button says `View guided demo`.
-- The page explains the field problem and integration approach.
+- The primary button says `Try the guided demo`.
+- The page explains the field problem, polished integration flow, safety posture, and prototype version labels.
 
 Open:
 
@@ -75,7 +75,7 @@ http://localhost:8000/guided-demo
 
 Expected:
 
-- Banner says `DEMO ONLY — NOT FOR REAL PATIENT CARE`.
+- Banner says `Demo only — not for real patient care`.
 - Fake case cards are visible.
 - Clicking `Child with danger signs` and `Run demo triage` shows `urgent_referral`.
 - An audit ID beginning with `aud_` appears.
@@ -200,6 +200,19 @@ Expected:
 - Ruff check passes.
 - Ruff format check passes.
 
+## Version Endpoint Test
+
+Open:
+
+http://localhost:8000/version
+
+Expected:
+
+- `api_version` is `0.1.0`.
+- `demo_version` is `0.4.0`.
+- `product_stage` is `prototype`.
+- `clinical_status` is `demo_only_not_validated`.
+
 ## Reset Test
 
 Command:
@@ -214,4 +227,5 @@ Expected:
 - Local demo database volume is removed.
 - Containers restart.
 - Migrations and seed data run again.
-- Demo UI works at http://localhost:8000/demo.
+- Business overview works at http://localhost:8000.
+- Guided demo works at http://localhost:8000/guided-demo.

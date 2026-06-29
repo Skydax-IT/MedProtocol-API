@@ -16,7 +16,10 @@ Never commit `.env`. It can contain real database URLs and API secrets. Generate
 | `DEMO_TENANT_ID` | Slug for the fake demo tenant. | `tenant_demo` | Yes | Yes | No |
 | `CORS_ALLOWED_ORIGINS` | Comma-separated browser origins allowed to call the API from another website. | `https://your-render-app.onrender.com` | No | Usually yes | No |
 | `LOG_LEVEL` | Logging detail. | `INFO` | No | No | No |
-| `APP_VERSION` | Version shown by `/version`. | `0.1.0` | No | No | No |
+| `APP_VERSION` | API contract version shown by `/version`. | `0.1.0` | No | No | No |
+| `DEMO_UX_VERSION` | Public demo website/user-experience version shown by `/version`. | `0.4.0` | No | No | No |
+| `PRODUCT_STAGE` | Product maturity label. | `prototype` | No | No | No |
+| `CLINICAL_STATUS` | Clinical validation status machine label. | `demo_only_not_validated` | No | No | No |
 | `APP_COMMIT` | Commit shown by `/version`. Render may set this automatically. | `local-dev` | No | No | No |
 | `RATE_LIMIT_PER_MINUTE` | Simple MVP request limit per client. | `120` | No | No | No |
 

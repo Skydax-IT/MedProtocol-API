@@ -29,12 +29,14 @@ def test_landing_page_is_public(client: TestClient) -> None:
 
     assert response.status_code == 200
     assert "MedProtocol API" in response.text
+    assert "Clinical protocol logic, ready for frontline systems" in response.text
     assert "A protocol-based triage layer for frontline health systems" in response.text
-    assert "Turn clinical protocols into safe, traceable triage workflows" in response.text
-    assert "View guided demo" in response.text
-    assert "The field problem" in response.text
-    assert "The MedProtocol approach" in response.text
-    assert "DEMO ONLY" in response.text
+    assert "Try the guided demo" in response.text
+    assert "The gap in digital health is not data collection" in response.text
+    assert "A protocol layer that plugs into existing systems" in response.text
+    assert "Demo UX version" in response.text
+    assert "polished business demo" in response.text
+    assert "demo only" in response.text.lower()
     assert "No real patient data" in response.text
     assert "ready for real patient care" not in response.text.lower()
     assert "safe for real patient care" not in response.text.lower()
@@ -44,12 +46,15 @@ def test_guided_demo_page_is_public_and_safety_marked(client: TestClient) -> Non
     response = client.get("/guided-demo")
 
     assert response.status_code == 200
-    assert "Guided Demo" in response.text
+    assert "Guided product walkthrough" in response.text
     assert "Step 1 — Field observation" in response.text
     assert "Step 2 — Protocol engine result" in response.text
     assert "Step 3 — Traceability" in response.text
     assert "Technical details for developers" in response.text
-    assert "DEMO ONLY" in response.text
+    assert "Fake cases only" in response.text
+    assert "What the field worker observes" in response.text
+    assert "What MedProtocol checks" in response.text
+    assert "demo only" in response.text.lower()
     assert "Fake cases only" in response.text
     assert "No real patient data" in response.text
     assert "ready for real patient care" not in response.text.lower()
@@ -61,8 +66,8 @@ def test_demo_page_is_public_and_safety_marked(client: TestClient) -> None:
 
     assert response.status_code == 200
     assert "Technical Demo Console" in response.text
-    assert "For a non-technical overview, use the Guided Demo page." in response.text
-    assert "DEMO ONLY" in response.text
+    assert "This page is for developers and technical reviewers." in response.text
+    assert "demo only" in response.text.lower()
     assert "No real patient data" in response.text
     assert "Copy JSON response" in response.text
     assert "View audit record" in response.text
@@ -75,6 +80,17 @@ def test_swagger_docs_are_still_available(client: TestClient) -> None:
 
     assert response.status_code == 200
     assert "swagger" in response.text.lower()
+
+
+def test_version_exposes_api_and_demo_versions(client: TestClient) -> None:
+    response = client.get("/version")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["api_version"] == "0.1.0"
+    assert body["demo_version"] == "0.4.0"
+    assert body["product_stage"] == "prototype"
+    assert body["clinical_status"] == "demo_only_not_validated"
 
 
 def test_public_pages_do_not_claim_real_clinical_use(client: TestClient) -> None:

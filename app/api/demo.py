@@ -14,26 +14,36 @@ router = APIRouter(tags=["demo"])
 BASE_CSS = """
 :root {
   color-scheme: light;
-  --ink: #17202a;
-  --muted: #5d6d7e;
-  --line: #d8e1e8;
-  --soft: #f5f8fa;
+  --ink: #102133;
+  --muted: #5c7183;
+  --line: #d9e5ec;
+  --soft: #f5f9fb;
   --panel: #ffffff;
-  --blue: #145a8d;
-  --blue-soft: #eef6fc;
-  --green: #1f7a63;
-  --green-soft: #ecf8f4;
-  --danger: #9f1d20;
-  --danger-soft: #fff0f0;
-  --shadow: 0 12px 30px rgba(20, 62, 89, 0.08);
+  --navy: #0d2b45;
+  --blue: #12618f;
+  --blue-soft: #eaf6fb;
+  --teal: #137f7a;
+  --teal-soft: #e8f7f4;
+  --green: #25815f;
+  --green-soft: #ecf8f2;
+  --gold: #b46b21;
+  --danger: #9b2028;
+  --danger-soft: #fff2f2;
+  --shadow: 0 22px 70px rgba(20, 62, 89, 0.12);
+  --shadow-soft: 0 12px 32px rgba(18, 97, 143, 0.10);
+  --radius: 18px;
 }
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--ink);
-  background: linear-gradient(180deg, #f8fbfc 0%, #ffffff 280px);
-  line-height: 1.45;
+  background:
+    radial-gradient(circle at 12% 4%, rgba(19, 127, 122, 0.16), transparent 34%),
+    radial-gradient(circle at 88% 0%, rgba(18, 97, 143, 0.14), transparent 30%),
+    linear-gradient(180deg, #f7fbfd 0%, #ffffff 520px);
+  line-height: 1.55;
 }
 a { color: inherit; }
 .button-link {
@@ -41,47 +51,71 @@ a { color: inherit; }
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  border: 1px solid var(--blue);
-  border-radius: 7px;
-  background: var(--blue);
+  border: 1px solid #0f6d9e;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #0f6d9e, #12847d);
   color: #fff;
   font-weight: 800;
-  padding: 11px 14px;
-  min-height: 44px;
+  padding: 12px 18px;
+  min-height: 46px;
+  box-shadow: 0 14px 34px rgba(18, 97, 143, 0.22);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+.button-link:hover,
+.button-link:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 42px rgba(18, 97, 143, 0.28);
 }
 .button-link.secondary {
   background: #fff;
   color: var(--blue);
+  border-color: #c7dbe6;
+  box-shadow: none;
 }
 .button-link.tertiary {
   border-color: transparent;
   background: transparent;
   color: var(--blue);
   padding-left: 0;
+  box-shadow: none;
 }
 .button-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
-  margin: 18px 0 8px;
+  margin: 24px 0 8px;
 }
 .topnav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  padding: 14px 24px;
-  border-bottom: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.92);
+  padding: 16px 28px;
+  border-bottom: 1px solid rgba(217, 229, 236, 0.72);
+  background: rgba(255, 255, 255, 0.82);
   position: sticky;
   top: 0;
   z-index: 10;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(18px);
 }
 .brand {
-  font-weight: 800;
-  color: var(--blue);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 900;
+  color: var(--navy);
+  letter-spacing: 0;
+}
+.brand::before {
+  content: "";
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.35), transparent),
+    linear-gradient(135deg, #0f6d9e, #17a080);
+  box-shadow: 0 10px 22px rgba(18, 97, 143, 0.20);
 }
 .navlinks {
   display: flex;
@@ -92,9 +126,10 @@ a { color: inherit; }
   text-decoration: none;
   font-size: 14px;
   font-weight: 700;
-  padding: 8px 10px;
-  border-radius: 7px;
+  padding: 9px 11px;
+  border-radius: 999px;
   color: var(--muted);
+  transition: background 160ms ease, color 160ms ease;
 }
 .navlinks a:hover,
 .navlinks a:focus {
@@ -102,69 +137,81 @@ a { color: inherit; }
   color: var(--blue);
 }
 .warning-strip {
-  padding: 12px 24px;
-  background: var(--danger-soft);
-  border-bottom: 1px solid #f2c9c9;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  padding: 12px 28px;
+  background: rgba(255, 242, 242, 0.94);
+  border-bottom: 1px solid #f0c9cc;
   color: var(--danger);
-  font-weight: 750;
+  font-weight: 800;
 }
 .warning-strip span {
   display: inline-block;
-  margin-right: 18px;
 }
 main {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 28px 24px 48px;
+  padding: 42px 24px 56px;
 }
 .section {
-  padding: 34px 0;
-  border-top: 1px solid var(--line);
+  padding: 58px 0;
+  border-top: 1px solid rgba(217, 229, 236, 0.78);
 }
 .section:first-child { border-top: 0; }
 .section-kicker {
-  color: var(--blue);
+  color: var(--teal);
   font-size: 13px;
   font-weight: 850;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   text-transform: uppercase;
 }
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
-  gap: 24px;
-  align-items: start;
-  padding: 20px 0 28px;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.88fr);
+  gap: 40px;
+  align-items: center;
+  padding: 24px 0 56px;
 }
 h1 {
-  margin: 0 0 8px;
-  font-size: clamp(32px, 5vw, 54px);
+  margin: 0 0 16px;
+  color: var(--navy);
+  font-size: clamp(40px, 6vw, 74px);
   letter-spacing: 0;
-  line-height: 1.02;
+  line-height: 0.98;
 }
 .subtitle {
-  color: var(--blue);
-  font-size: 20px;
-  font-weight: 750;
-  margin: 0 0 18px;
+  color: var(--teal);
+  font-size: 19px;
+  font-weight: 850;
+  margin: 0 0 14px;
 }
-p { color: var(--muted); margin: 0 0 14px; }
+p {
+  color: var(--muted);
+  margin: 0 0 16px;
+  font-size: 16px;
+}
+.lead {
+  max-width: 720px;
+  color: #43596b;
+  font-size: 20px;
+}
 .panel,
 .card {
   border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--panel);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.90);
   box-shadow: var(--shadow);
 }
-.panel { padding: 18px; }
+.panel { padding: 22px; }
 .panel.plain {
   box-shadow: none;
 }
 .callout {
-  border: 1px solid #bde7d8;
-  border-radius: 8px;
+  border: 1px solid #bfe6de;
+  border-radius: 14px;
   background: var(--green-soft);
-  padding: 14px;
+  padding: 15px 16px;
   color: #164d3f;
   font-weight: 700;
 }
@@ -176,7 +223,7 @@ p { color: var(--muted); margin: 0 0 14px; }
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  padding-bottom: 10px;
+  padding-bottom: 12px;
   border-bottom: 1px solid var(--line);
 }
 .status-row:last-child {
@@ -195,27 +242,37 @@ p { color: var(--muted); margin: 0 0 14px; }
   background: var(--green-soft);
   border: 1px solid #bde7d8;
   border-radius: 999px;
-  padding: 3px 9px;
+  padding: 5px 10px;
   font-weight: 800;
   font-size: 13px;
 }
 .version-label {
   display: inline-flex;
-  margin: 0 0 14px;
-  color: var(--blue);
-  background: var(--blue-soft);
-  border: 1px solid #c9dfef;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 18px;
+  color: #0f6d62;
+  background: rgba(232, 247, 244, 0.92);
+  border: 1px solid #bfe6de;
   border-radius: 999px;
-  padding: 5px 10px;
+  padding: 7px 12px;
   font-weight: 800;
   font-size: 13px;
+}
+.version-label::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #19a985;
 }
 .footer-note {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 0 24px 34px;
+  padding: 12px 24px 40px;
   color: var(--muted);
   font-size: 14px;
+  border-top: 1px solid rgba(217, 229, 236, 0.78);
 }
 .footer-note strong {
   color: var(--ink);
@@ -225,6 +282,72 @@ p { color: var(--muted); margin: 0 0 14px; }
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
   margin: 10px 0 28px;
+}
+.hero-visual {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid rgba(203, 221, 230, 0.92);
+  border-radius: 28px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.96), rgba(235,247,250,0.86));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: -80px -70px auto auto;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: rgba(19, 127, 122, 0.14);
+}
+.mock-card {
+  position: relative;
+  border: 1px solid rgba(203, 221, 230, 0.92);
+  border-radius: 18px;
+  background: #fff;
+  padding: 16px;
+  box-shadow: var(--shadow-soft);
+  animation: float-in 680ms ease both;
+}
+.mock-card:nth-child(2) { animation-delay: 90ms; }
+.mock-card:nth-child(3) { animation-delay: 180ms; }
+.mock-card strong {
+  display: block;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.mock-card span,
+.mock-row {
+  display: block;
+  color: var(--muted);
+  font-size: 14px;
+}
+.mock-engine {
+  background: linear-gradient(135deg, #0d2b45, #12618f);
+  color: #fff;
+}
+.mock-engine strong,
+.mock-engine span {
+  color: #fff;
+}
+.mock-arrow {
+  justify-self: center;
+  color: var(--teal);
+  font-weight: 900;
+}
+.mock-metric {
+  display: inline-flex;
+  margin: 5px 6px 0 0;
+  border-radius: 999px;
+  background: var(--blue-soft);
+  color: var(--blue);
+  padding: 5px 9px;
+  font-size: 12px;
+  font-weight: 800;
 }
 .feature-grid,
 .audience-grid,
@@ -240,21 +363,29 @@ p { color: var(--muted); margin: 0 0 14px; }
 .flow {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
+  gap: 14px;
   align-items: stretch;
 }
 .flow-step {
   position: relative;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius);
   background: var(--panel);
-  padding: 16px;
-  min-height: 112px;
+  padding: 18px;
+  min-height: 128px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.flow-step:hover,
+.mini-card:hover,
+.case-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
 }
 .flow-step strong,
 .mini-card strong {
   display: block;
-  color: var(--blue);
+  color: var(--navy);
   margin-bottom: 8px;
 }
 .flow-step span,
@@ -264,17 +395,19 @@ p { color: var(--muted); margin: 0 0 14px; }
 }
 .mini-card {
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius);
   background: var(--panel);
-  padding: 16px;
+  padding: 18px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 .case-button.selected {
-  border-color: var(--blue);
-  background: var(--blue-soft);
+  border-color: #3aa89c;
+  background: linear-gradient(135deg, #ffffff, var(--teal-soft));
 }
 .step-label {
   display: inline-flex;
-  color: var(--blue);
+  color: var(--teal);
   font-size: 13px;
   font-weight: 850;
   margin-bottom: 8px;
@@ -294,13 +427,13 @@ p { color: var(--muted); margin: 0 0 14px; }
 }
 .card {
   display: block;
-  padding: 16px;
+  padding: 18px;
   text-decoration: none;
   min-height: 112px;
 }
 .card strong {
   display: block;
-  color: var(--blue);
+  color: var(--navy);
   font-size: 17px;
   margin-bottom: 8px;
 }
@@ -315,8 +448,10 @@ p { color: var(--muted); margin: 0 0 14px; }
   gap: 18px;
 }
 h2 {
-  margin: 0 0 12px;
-  font-size: 20px;
+  margin: 0 0 14px;
+  color: var(--navy);
+  font-size: clamp(24px, 3vw, 38px);
+  line-height: 1.12;
 }
 ul {
   margin: 0;
@@ -325,17 +460,21 @@ ul {
 }
 li { margin-bottom: 7px; }
 button {
-  border: 1px solid #b8c7d3;
-  border-radius: 7px;
-  background: var(--blue-soft);
+  border: 1px solid #b8d3dc;
+  border-radius: 999px;
+  background: #fff;
   color: var(--blue);
   font: inherit;
   font-weight: 750;
-  padding: 10px 12px;
+  padding: 11px 14px;
   cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 button:hover,
 button:focus {
+  background: var(--blue-soft);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-1px);
   outline: 2px solid #7fb3d5;
   outline-offset: 1px;
 }
@@ -353,7 +492,7 @@ pre {
   background: #101820;
   color: #eef5f8;
   padding: 14px;
-  border-radius: 8px;
+  border-radius: 14px;
   max-height: 420px;
 }
 details {
@@ -364,6 +503,17 @@ details {
 summary {
   cursor: pointer;
   font-weight: 800;
+  color: var(--navy);
+}
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @media (max-width: 900px) {
   .hero,
@@ -380,6 +530,7 @@ summary {
   }
   main { padding: 20px 16px 36px; }
   .topnav { align-items: flex-start; flex-direction: column; }
+  h1 { font-size: clamp(36px, 13vw, 54px); }
 }
 """
 
@@ -399,160 +550,154 @@ LANDING_TEMPLATE = Template(
     <div class="navlinks">
       <a href="/">Overview</a>
       <a href="/guided-demo">Guided Demo</a>
-      <a href="/demo">Technical Demo Console</a>
+      <a href="#integration">Integration</a>
+      <a href="#safety">Safety</a>
       <a href="/docs">Technical Docs</a>
-      <a href="/health">System Status</a>
     </div>
   </nav>
   <div class="warning-strip">
-    <span>DEMO ONLY — NOT FOR REAL PATIENT CARE</span>
+    <span>Demo only — not for real patient care</span>
     <span>No real patient data. No validated clinical protocol. No diagnosis or treatment recommendation.</span>
   </div>
   <main>
     <section class="hero">
       <div>
-        <div class="version-label">$demo_label</div>
+        <div class="version-label">Demo only — not for real patient care</div>
         <p class="subtitle">A protocol-based triage layer for frontline health systems</p>
-        <h1>Turn clinical protocols into safe, traceable triage workflows</h1>
-        <p>
-          MedProtocol API helps existing field health tools apply structured triage rules,
-          detect danger signs first, adapt outputs by health worker role, and keep an audit
-          trail — without replacing clinicians or making diagnoses.
+        <h1>Clinical protocol logic, ready for frontline systems</h1>
+        <p class="lead">
+          MedProtocol API is designed to turn validated clinical protocols into structured,
+          traceable triage workflows that existing field tools can call — without replacing
+          clinicians or making diagnoses.
         </p>
         <div class="button-row">
-          <a class="button-link" href="/guided-demo">View guided demo</a>
-          <a class="button-link secondary" href="#integration">See how it integrates</a>
-          <a class="button-link tertiary" href="/docs">Technical API docs</a>
+          <a class="button-link" href="/guided-demo">Try the guided demo</a>
+          <a class="button-link secondary" href="#integration">See integration flow</a>
+          <a class="button-link tertiary" href="/docs">For developers: API docs</a>
         </div>
       </div>
-      <aside class="panel status-card">
-        <h2>Demo status</h2>
-        <div class="status-row"><strong>API status</strong><span class="pill">online</span></div>
-        <div class="status-row"><strong>Environment</strong><span>$environment</span></div>
-        <div class="status-row"><strong>Demo mode</strong><span>$demo_mode</span></div>
-        <div class="status-row"><strong>API version</strong><span>$version</span></div>
-        <p class="muted-note">
-          This public demo uses fake cases only and shows the product concept, not clinical validation.
-        </p>
+      <aside class="hero-visual" aria-label="Product flow mockup">
+        <div class="mock-card">
+          <strong>Field observation</strong>
+          <span>Rural health post · community health worker</span>
+          <span class="mock-metric">Danger signs selected</span>
+          <span class="mock-metric">No free text</span>
+        </div>
+        <div class="mock-arrow">↓</div>
+        <div class="mock-card mock-engine">
+          <strong>MedProtocol API engine</strong>
+          <span>Danger signs first · role-aware rules · versioned demo protocol</span>
+        </div>
+        <div class="mock-arrow">↓</div>
+        <div class="mock-card">
+          <strong>Triage output + audit</strong>
+          <span>Urgency, short message, rule ID, audit trail</span>
+          <span class="mock-metric">No diagnosis</span>
+          <span class="mock-metric">Demo only</span>
+        </div>
+        <div class="mock-card status-card">
+          <strong>Prototype status</strong>
+          <div class="status-row"><strong>API version</strong><span>$api_version</span></div>
+          <div class="status-row"><strong>Demo UX version</strong><span>$demo_ux_version</span></div>
+          <div class="status-row"><strong>Product stage</strong><span>$product_stage</span></div>
+          <div class="status-row"><strong>Clinical status</strong><span>$clinical_status</span></div>
+        </div>
       </aside>
     </section>
 
     <section class="section">
-      <div class="section-kicker">The field problem</div>
-      <h2>Protocols are hard to keep consistent across frontline tools</h2>
+      <div class="section-kicker">Problem</div>
+      <h2>The gap in digital health is not data collection. It is safe action guidance.</h2>
       <div class="feature-grid">
-        <div class="mini-card"><strong>Data collection is not enough</strong><span>Many field tools collect observations but do not consistently guide what should happen next.</span></div>
-        <div class="mini-card"><strong>Protocols live in many formats</strong><span>Clinical guidance may exist as PDFs, paper checklists, training material, or local workflows.</span></div>
-        <div class="mini-card"><strong>Decision trees are rebuilt repeatedly</strong><span>Each NGO, ministry project, or integrator often recreates similar logic in a different system.</span></div>
-        <div class="mini-card"><strong>Updates are difficult to trace</strong><span>Rule changes, auditability, versioning, and review history are hard to manage across deployments.</span></div>
-        <div class="mini-card"><strong>Roles matter</strong><span>A community health worker, nurse, midwife, and doctor may need different wording and scope.</span></div>
-        <div class="mini-card"><strong>Connectivity is uneven</strong><span>Low-connectivity settings make consistent, updatable guidance even harder to deliver.</span></div>
+        <div class="mini-card"><strong>Field tools collect data</strong><span>Symptoms, visits, and activity data are captured, but action guidance is often inconsistent.</span></div>
+        <div class="mini-card"><strong>Protocols stay fragmented</strong><span>Guidance may remain in PDFs, paper checklists, training material, or hard-coded forms.</span></div>
+        <div class="mini-card"><strong>Logic is hard to reuse</strong><span>Decision trees become difficult to maintain, audit, and update across programs.</span></div>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-kicker">The MedProtocol approach</div>
-      <h2>Existing apps keep their workflow. MedProtocol adds the protocol layer.</h2>
-      <p>
-        An app, SMS/USSD service, or health information system sends structured observations.
-        MedProtocol checks danger signs first, applies explicit deterministic rules, returns a
-        clear triage output, and records why that output was generated. The same design can later
-        support offline bundles for low-connectivity use.
-      </p>
+      <div class="section-kicker">Solution</div>
+      <h2>A protocol layer that plugs into existing systems</h2>
       <div class="flow" aria-label="MedProtocol integration flow">
-        <div class="flow-step"><strong>Field app / SMS / tablet</strong><span>Sends structured observations from a fake encounter.</span></div>
-        <div class="flow-step"><strong>MedProtocol API</strong><span>Applies explicit, versioned, demo-only rules.</span></div>
-        <div class="flow-step"><strong>Triage output + audit trail</strong><span>Returns urgency, role-aware wording, and rule metadata.</span></div>
-        <div class="flow-step"><strong>Existing system / referral workflow</strong><span>Stores or displays the result in the partner system.</span></div>
+        <div class="flow-step"><strong>1. Structured observations</strong><span>An existing field app sends selected signs, context, and role.</span></div>
+        <div class="flow-step"><strong>2. Danger signs first</strong><span>The engine checks severe-risk indicators before action wording.</span></div>
+        <div class="flow-step"><strong>3. Role and version</strong><span>Rules are applied by role, country, and protocol version.</span></div>
+        <div class="flow-step"><strong>4. Output and audit</strong><span>The system returns a short triage message and traceable audit trail.</span></div>
       </div>
     </section>
 
     <section class="section">
-      <div class="two-col">
-        <div class="panel">
-          <h2>What it is</h2>
-          <ul>
-            <li>Protocol-based triage API</li>
-            <li>Deterministic rule engine</li>
-            <li>Integration layer for existing systems</li>
-            <li>Role-aware output composer</li>
-            <li>Audit and versioning layer</li>
-            <li>Demo of a future offline-ready architecture</li>
-          </ul>
-        </div>
-        <div class="panel">
-          <h2>What it is not</h2>
-          <ul>
-            <li>Not a doctor</li>
-            <li>Not a diagnosis engine</li>
-            <li>Not a chatbot</li>
-            <li>Not a treatment engine</li>
-            <li>Not a replacement for clinical judgment</li>
-            <li>Not validated for real care</li>
-          </ul>
-        </div>
+      <div class="section-kicker">Why it matters</div>
+      <h2>Safer operational workflows without rebuilding every tool</h2>
+      <div class="feature-grid">
+        <div class="mini-card"><strong>Faster triage workflows</strong><span>Give frontline systems a consistent protocol layer to call.</span></div>
+        <div class="mini-card"><strong>Safer escalation logic</strong><span>Prioritize danger signs and referral wording in the demo architecture.</span></div>
+        <div class="mini-card"><strong>Traceable protocol decisions</strong><span>Return rule IDs, protocol versions, and audit records with every evaluation.</span></div>
+        <div class="mini-card"><strong>Easier integration</strong><span>Designed for NGOs, ministries, and implementers already running digital tools.</span></div>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-kicker">Who could use this</div>
-      <h2>Built for health programs that already have tools and workflows</h2>
+      <div class="section-kicker">Designed for</div>
+      <h2>Teams working across public health delivery</h2>
       <div class="audience-grid">
-        <div class="mini-card"><strong>NGOs with field health apps</strong><span>Add traceable triage logic without rebuilding the whole application.</span></div>
-        <div class="mini-card"><strong>Ministries of health</strong><span>Explore how approved protocols could be versioned and distributed later.</span></div>
-        <div class="mini-card"><strong>Digital health integrators</strong><span>Connect a deterministic protocol layer to existing platforms.</span></div>
-        <div class="mini-card"><strong>Community health programs</strong><span>Adapt outputs to frontline roles and low-connectivity workflows.</span></div>
-        <div class="mini-card"><strong>SMS/USSD service providers</strong><span>Request the next best structured question or a short message output.</span></div>
-        <div class="mini-card"><strong>Rural health programs</strong><span>Design for settings where connectivity and referral pathways vary.</span></div>
+        <div class="mini-card"><strong>NGOs</strong><span>Field health apps and program workflows.</span></div>
+        <div class="mini-card"><strong>Ministries of Health</strong><span>Future protocol governance and country approval workflows.</span></div>
+        <div class="mini-card"><strong>Digital health integrators</strong><span>API-first triage logic for existing systems.</span></div>
+        <div class="mini-card"><strong>Community health programs</strong><span>Role-aware frontline guidance concepts.</span></div>
+        <div class="mini-card"><strong>SMS/USSD providers</strong><span>Short-message and next-question workflows.</span></div>
+        <div class="mini-card"><strong>Rural health programs</strong><span>Low-connectivity and offline bundle planning.</span></div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="safety">
       <div class="section-kicker">Safety by design</div>
-      <h2>Designed to be explainable before it is clinically ambitious</h2>
+      <h2>Explicit, traceable, and conservative by default</h2>
       <div class="feature-grid two">
-        <div class="mini-card"><strong>Explicit rules</strong><span>Rules are written, versioned, testable, and not generated by an AI model.</span></div>
-        <div class="mini-card"><strong>Traceable outputs</strong><span>Every output includes protocol and rule metadata.</span></div>
-        <div class="mini-card"><strong>Role-aware wording</strong><span>Scope of practice controls what is shown for each health worker role.</span></div>
-        <div class="mini-card"><strong>Missing data surfaced</strong><span>Critical missing information is shown instead of hidden.</span></div>
-        <div class="mini-card"><strong>Risk first</strong><span>Severe risk defaults to referral or escalation wording in this demo architecture.</span></div>
-        <div class="mini-card"><strong>Governance required</strong><span>Real deployment would require medical validation, legal review, privacy/security review, and country approval.</span></div>
+        <div class="mini-card"><strong>Deterministic rules, not AI diagnosis</strong><span>No LLM or generative system makes clinical decisions.</span></div>
+        <div class="mini-card"><strong>Danger signs first</strong><span>Severe-risk indicators are prioritized before any output wording.</span></div>
+        <div class="mini-card"><strong>Role-based outputs</strong><span>Outputs are adapted to health worker scope.</span></div>
+        <div class="mini-card"><strong>Missing data highlighted</strong><span>Critical gaps are surfaced instead of hidden.</span></div>
+        <div class="mini-card"><strong>Audit trail for every decision</strong><span>Protocol version, rule IDs, and audit IDs are returned.</span></div>
+        <div class="mini-card"><strong>Validation required</strong><span>Medical validation, legal review, privacy/security review, and country approval are required before any real pilot.</span></div>
       </div>
     </section>
 
     <section class="section" id="integration">
       <div class="section-kicker">Integration</div>
-      <h2>Designed to plug into existing systems</h2>
-      <div class="feature-grid two">
-        <div class="mini-card"><strong>Field app triage</strong><span>A field app sends structured observations. The API returns triage output and audit metadata.</span></div>
-        <div class="mini-card"><strong>SMS/USSD sessions</strong><span>A low-bandwidth session asks what to ask next. The API returns the next structured question.</span></div>
-        <div class="mini-card"><strong>DHIS2/OpenMRS-like systems</strong><span>A health information system stores encounter data. The API adds decision and audit metadata.</span></div>
-        <div class="mini-card"><strong>Offline bundle concept</strong><span>Future bundles could support low-connectivity use with versioned rule packages.</span></div>
+      <h2>Built for the systems health programs already use</h2>
+      <div class="flow" aria-label="Public demo integration flow">
+        <div class="flow-step"><strong>Field app / SMS / Tablet</strong><span>Structured observations from an existing workflow.</span></div>
+        <div class="flow-step"><strong>MedProtocol API</strong><span>Deterministic protocol layer and role-aware output composer.</span></div>
+        <div class="flow-step"><strong>Triage output + audit</strong><span>Short message, urgency level, rule IDs, and audit record.</span></div>
+        <div class="flow-step"><strong>Existing health system</strong><span>DHIS2/OpenMRS-like systems, NGO tools, or referral workflows.</span></div>
       </div>
       <p class="muted-note">
-        Structured observations means selected fields such as age group, role, setting, and danger signs.
-        It does not mean free-text diagnosis.
+        The architecture also leaves room for future offline bundle concepts for low-connectivity programs.
       </p>
     </section>
 
     <section class="section">
       <div class="panel">
-        <h2>Explore the demo</h2>
+        <h2>Explore the concept safely</h2>
         <p>
-          Start with the guided demo if you are reviewing the product concept. Use the technical
-          docs only if you want to inspect the API contract.
+          The guided demo uses fake cases only. Technical docs remain available for API reviewers.
         </p>
         <div class="button-row">
-          <a class="button-link" href="/guided-demo">Explore the guided demo</a>
-          <a class="button-link secondary" href="/docs">Open technical docs</a>
-          <a class="button-link secondary" href="/health">System status</a>
+          <a class="button-link" href="/guided-demo">Open guided demo</a>
+          <a class="button-link secondary" href="/docs">View technical docs</a>
+          <a class="button-link secondary" href="https://github.com/Skydax-IT/MedProtocol-API/blob/main/PROJECT_STATUS.md">Read project status</a>
         </div>
       </div>
     </section>
   </main>
   <footer class="footer-note">
-    <strong>Repository notes:</strong>
-    PROJECT_STATUS.md, ROADMAP.md, DEMO_SCRIPT.md, docs/BUSINESS_DEMO_CHECKLIST.md, and docs/SCREENSHOT_GUIDE.md.
+    <strong>Secondary links:</strong>
+    <a href="/demo">Technical Demo Console</a> ·
+    <a href="/health">System Status</a> ·
+    <a href="/redoc">ReDoc</a> ·
+    <a href="https://github.com/Skydax-IT/MedProtocol-API/blob/main/PROJECT_STATUS.md">Project Status</a> ·
+    <a href="https://github.com/Skydax-IT/MedProtocol-API/blob/main/ROADMAP.md">Roadmap</a>
   </footer>
 </body>
 </html>"""
@@ -570,8 +715,9 @@ GUIDED_DEMO_TEMPLATE = Template(
     $css
     main.guided-layout {
       display: grid;
-      grid-template-columns: minmax(280px, 380px) 1fr;
-      gap: 22px;
+      grid-template-columns: minmax(300px, 390px) 1fr;
+      gap: 26px;
+      align-items: start;
     }
     .cases { display: grid; gap: 12px; }
     .case-button {
@@ -579,7 +725,8 @@ GUIDED_DEMO_TEMPLATE = Template(
       text-align: left;
       background: #fff;
       color: var(--ink);
-      box-shadow: none;
+      border-radius: 18px;
+      box-shadow: var(--shadow-soft);
     }
     .case-button strong {
       display: block;
@@ -595,10 +742,10 @@ GUIDED_DEMO_TEMPLATE = Template(
     }
     .field {
       border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 12px;
+      border-radius: 16px;
+      padding: 14px;
       min-height: 72px;
-      background: var(--soft);
+      background: linear-gradient(180deg, #ffffff, var(--soft));
     }
     .field strong {
       display: block;
@@ -611,7 +758,7 @@ GUIDED_DEMO_TEMPLATE = Template(
     .result-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      gap: 14px;
     }
     .wide { grid-column: 1 / -1; }
     .copy-row {
@@ -641,22 +788,24 @@ GUIDED_DEMO_TEMPLATE = Template(
     <div class="navlinks">
       <a href="/">Overview</a>
       <a href="/guided-demo">Guided Demo</a>
+      <a href="/#integration">Integration</a>
+      <a href="/#safety">Safety</a>
       <a href="/demo">Technical Demo Console</a>
       <a href="/docs">Technical Docs</a>
     </div>
   </nav>
   <div class="warning-strip">
-    <span>DEMO ONLY — NOT FOR REAL PATIENT CARE</span>
+    <span>Demo only — not for real patient care</span>
     <span>No real patient data. No validated clinical protocol. No diagnosis or treatment recommendation.</span>
   </div>
 
   <main class="guided-layout">
     <section class="panel">
       <div class="version-label">$demo_label</div>
-      <h1>Guided Demo</h1>
-      <p>
-        This walkthrough shows how an existing field app might send fake structured observations,
-        what MedProtocol API does with them, and why the result is traceable.
+      <h1>Guided product walkthrough</h1>
+      <p class="lead">
+        This guided demo uses fake cases to show how an existing field tool could call MedProtocol API.
+        It is not a clinical tool and must not be used for real patients.
       </p>
       <p class="callout">Fake cases only. Do not type or paste real patient information.</p>
       <h2>Choose a fake story</h2>
@@ -672,7 +821,8 @@ GUIDED_DEMO_TEMPLATE = Template(
         <div class="field"><strong>Patient group</strong><span id="patientGroup">-</span></div>
         <div class="field"><strong>Context</strong><span id="context">-</span></div>
         <div class="field"><strong>User role</strong><span id="role">-</span></div>
-        <div class="field wide"><strong>Observed danger signs</strong><span id="observations">-</span></div>
+        <div class="field wide"><strong>What the field worker observes</strong><span id="observations">-</span></div>
+        <div class="field wide"><strong>What MedProtocol checks</strong><span id="checks">-</span></div>
       </div>
       <div class="button-row">
         <button type="button" id="runGuided">Run demo triage</button>
@@ -680,7 +830,7 @@ GUIDED_DEMO_TEMPLATE = Template(
 
       <section class="section">
         <div class="step-label">Step 2 — Protocol engine result</div>
-        <h2>What the field worker sees</h2>
+        <h2>What the field worker would see</h2>
         <div id="guidedStatus" class="status">Run the fake case to see the demo output.</div>
         <div class="result-grid">
           <div class="field"><strong>Urgency level</strong><span id="guidedUrgency">-</span></div>
@@ -688,14 +838,14 @@ GUIDED_DEMO_TEMPLATE = Template(
           <div class="field wide"><strong>Immediate action</strong><span id="guidedAction">-</span></div>
           <div class="field"><strong>Danger signs detected</strong><span id="guidedDanger">-</span></div>
           <div class="field"><strong>Missing critical data</strong><span id="guidedMissing">-</span></div>
-          <div class="field wide"><strong>Short message for low-connectivity channels</strong><span id="guidedSms">-</span></div>
-          <div class="field wide"><strong>Why this output was generated</strong><span id="guidedWhy">-</span></div>
+          <div class="field wide"><strong>Low-connectivity message</strong><span id="guidedSms">-</span></div>
+          <div class="field wide"><strong>Why this was triggered</strong><span id="guidedWhy">-</span></div>
         </div>
       </section>
 
       <section class="section">
         <div class="step-label">Step 3 — Traceability</div>
-        <h2>Why it is auditable</h2>
+        <h2>Traceability</h2>
         <div class="result-grid">
           <div class="field"><strong>Rule ID</strong><span id="guidedRule">-</span></div>
           <div class="field"><strong>Protocol version</strong><span id="guidedProtocol">-</span></div>
@@ -706,9 +856,9 @@ GUIDED_DEMO_TEMPLATE = Template(
         </div>
 
         <div id="guidedCopyRow" class="copy-row">
-          <button type="button" id="copySummary">Copy non-technical summary</button>
+          <button type="button" id="copySummary">Copy summary</button>
           <button type="button" id="copyGuidedSms">Copy SMS/USSD message</button>
-          <button type="button" id="copyTechnicalJson">Copy technical JSON</button>
+          <button type="button" id="copyTechnicalJson">Copy JSON</button>
           <button type="button" id="downloadGuidedJson">Download demo result JSON</button>
         </div>
 
@@ -725,7 +875,7 @@ GUIDED_DEMO_TEMPLATE = Template(
   </main>
   <footer class="footer-note">
     <strong>For technical reviewers:</strong>
-    use the <a href="/demo">Technical Demo Console</a>, <a href="/docs">Swagger docs</a>, or <a href="/redoc">Alternative API Docs</a>.
+    use the <a href="/demo">Technical Demo Console</a>, <a href="/docs">Technical Docs</a>, or <a href="/redoc">Alternative API Docs</a>.
   </footer>
 
   <script>
@@ -792,6 +942,7 @@ GUIDED_DEMO_TEMPLATE = Template(
         context: "Rural health post",
         role: "community_health_worker",
         observations: "Lethargy/unconscious; unable to drink/breastfeed",
+        checks: "Danger signs first, then role scope and demo protocol metadata.",
         purpose: "Shows danger signs being prioritized first and escalation wording returned.",
         build: () => {
           const payload = cloneBase();
@@ -806,6 +957,7 @@ GUIDED_DEMO_TEMPLATE = Template(
         context: "Rural maternity contact point",
         role: "midwife",
         observations: "Severe bleeding",
+        checks: "Pregnancy danger sign demo rule, midwife role, and protocol version.",
         purpose: "Shows role-aware output for a pregnancy danger-sign demo rule.",
         build: () => {
           const payload = cloneBase();
@@ -824,6 +976,7 @@ GUIDED_DEMO_TEMPLATE = Template(
         context: "Community follow-up",
         role: "community_health_worker",
         observations: "Age and respiratory rate are missing",
+        checks: "Missing critical data before producing a complete demo interpretation.",
         purpose: "Shows that missing critical information is surfaced instead of hidden.",
         build: () => {
           const payload = cloneBase();
@@ -861,6 +1014,7 @@ GUIDED_DEMO_TEMPLATE = Template(
       setText("context", item.context);
       setText("role", item.role);
       setText("observations", item.observations);
+      setText("checks", item.checks);
       resetOutput();
     }
     function nonTechnicalSummary() {
@@ -1039,10 +1193,10 @@ DEMO_TEMPLATE = Template(
     }
     .field {
       border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 12px;
+      border-radius: 16px;
+      padding: 14px;
       min-height: 72px;
-      background: var(--soft);
+      background: linear-gradient(180deg, #ffffff, var(--soft));
     }
     .field strong {
       display: block;
@@ -1082,13 +1236,14 @@ DEMO_TEMPLATE = Template(
     <div class="navlinks">
       <a href="/">Overview</a>
       <a href="/guided-demo">Guided Demo</a>
+      <a href="/#integration">Integration</a>
+      <a href="/#safety">Safety</a>
       <a href="/demo">Technical Demo Console</a>
       <a href="/docs">Technical Docs</a>
-      <a href="/health">System Status</a>
     </div>
   </nav>
   <div class="warning-strip">
-    <span>DEMO ONLY — NOT FOR REAL PATIENT CARE</span>
+    <span>Demo only — not for real patient care</span>
     <span>No real patient data. No validated clinical protocol. No diagnosis or treatment recommendation.</span>
   </div>
 
@@ -1097,8 +1252,8 @@ DEMO_TEMPLATE = Template(
       <div class="version-label">$demo_label</div>
       <h1>Technical Demo Console</h1>
       <p>
-        For developers, technical reviewers, API testing, JSON inspection, and audit inspection.
-        For a non-technical overview, use the Guided Demo page.
+        This page is for developers and technical reviewers. For a non-technical walkthrough,
+        open the Guided Demo.
       </p>
       <div class="button-row">
         <a class="button-link" href="/guided-demo">Open Guided Demo</a>
@@ -1447,6 +1602,10 @@ def landing_page() -> HTMLResponse:
         environment=settings.environment,
         demo_mode="enabled" if settings.demo_mode else "disabled",
         version=settings.version,
+        api_version=settings.version,
+        demo_ux_version=f"v{settings.demo_version} polished business demo",
+        product_stage=settings.product_stage.title(),
+        clinical_status="Demo only — not validated for real care",
     )
     return HTMLResponse(content=html)
 

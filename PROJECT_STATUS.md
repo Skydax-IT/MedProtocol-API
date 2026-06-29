@@ -8,7 +8,14 @@ This is not a medical product and is not ready for real clinical use.
 
 Release checkpoint: `v0.1.0-local-demo` marks the local demo MVP checkpoint.
 
-Current product step: `v0.3-business-demo-ux` makes the public demo understandable for non-technical stakeholders before online sharing.
+Current product step: `v0.4-polished-business-site` makes the public demo feel like a polished, high-trust product website before online sharing.
+
+Version labels:
+
+- API version: `0.1.0`
+- Demo UX version: `0.4.0`
+- Product stage: prototype
+- Clinical status: demo only, not validated for real care
 
 ## Implemented
 
@@ -16,7 +23,7 @@ Current product step: `v0.3-business-demo-ux` makes the public demo understandab
 - Docker Compose local environment with PostgreSQL and API containers.
 - One-command demo scripts for start, stop, reset, and logs.
 - Mac double-click command files for non-technical local use.
-- Business-oriented overview at `http://localhost:8000`.
+- Polished business/product overview at `http://localhost:8000`.
 - Guided non-technical demo at `http://localhost:8000/guided-demo`.
 - Technical Demo Console at `http://localhost:8000/demo`.
 - Demo-only deterministic rule engine.
@@ -31,6 +38,7 @@ Current product step: `v0.3-business-demo-ux` makes the public demo understandab
 - `/ready` readiness endpoint for hosted demo checks.
 - Render/Neon deployment preparation docs.
 - Business demo checklist for pre-sharing review.
+- Structured `/version` fields for API version, demo UX version, product stage, and clinical status.
 
 ## Verified Locally
 

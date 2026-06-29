@@ -12,11 +12,12 @@ http://localhost:8000
 
 What it demonstrates:
 
-- Business-oriented demo entry point.
-- Product name and positioning.
+- Polished business/product demo entry point.
+- Product name and positioning for non-technical stakeholders.
 - Demo-only safety banner.
-- Field problem, MedProtocol approach, safety-by-design, and integration story.
-- Clear path to `View guided demo`.
+- Visual flow from field observation to MedProtocol API to triage output and audit trail.
+- Separate labels for API version, demo UX version, product stage, and clinical status.
+- Clear path to `Try the guided demo`.
 
 ## Guided Demo Before Running a Case
 
@@ -29,7 +30,7 @@ http://localhost:8000/guided-demo
 What it demonstrates:
 
 - Non-technical reviewers do not need Swagger, JSON, or API keys.
-- Fake story cases are predefined.
+- Fake story cases are predefined in a product walkthrough.
 - No real patient data entry is needed.
 - Safety warnings remain visible.
 
