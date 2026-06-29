@@ -1,0 +1,56 @@
+- rule_id: demo_insufficient_data_001
+  protocol_id: demo_general_triage
+  protocol_version: DEMO_DRAFT_NOT_VALIDATED
+  priority: 10
+  module: general_triage
+  patient_group: general
+  status: draft
+  validation_status: demo_only
+  clinical_use_status: not_for_real_patient_care
+  real_care_validation_status: not_validated_for_real_care
+  condition:
+    any:
+      - path: patient_context.age_months
+        operator: not_exists
+      - path: encounter_context.user_role
+        operator: not_exists
+      - path: encounter_context.country_code
+        operator: not_exists
+  result:
+    urgency_level: cannot_determine
+    referral_required:
+    action_code: ask_missing_questions
+    reason_code: missing_critical_data
+  safety:
+    allow_medication: false
+    allow_dosage: false
+    allow_diagnosis: false
+- rule_id: demo_general_no_demo_danger_001
+  protocol_id: demo_general_triage
+  protocol_version: DEMO_DRAFT_NOT_VALIDATED
+  priority: 1
+  module: general_triage
+  patient_group: general
+  status: draft
+  validation_status: demo_only
+  clinical_use_status: not_for_real_patient_care
+  real_care_validation_status: not_validated_for_real_care
+  condition:
+    all:
+      - path: patient_context.age_months
+        operator: exists
+      - path: encounter_context.user_role
+        operator: exists
+      - path: encounter_context.country_code
+        operator: exists
+  result:
+    urgency_level: routine_guidance
+    referral_required: false
+    action_code: routine_guidance
+    reason_code: no_demo_danger_sign_rule_triggered
+    possible_suspicions:
+      - "Aucune suspicion clinique n'est produite par cette démonstration."
+  safety:
+    allow_medication: false
+    allow_dosage: false
+    allow_diagnosis: false

@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: medprotocol-api-demo
+    runtime: docker
+    plan: free
+    autoDeploy: false
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: APP_ENV
+        value: demo
+      - key: DEMO_MODE
+        value: "true"
+      - key: DATABASE_URL
+        sync: false
+      - key: API_KEY_PEPPER
+        sync: false
+      - key: DEMO_API_KEY
+        sync: false
+      - key: DEMO_TENANT_ID
+        value: tenant_demo
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+      - key: LOG_LEVEL
+        value: INFO
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "120"

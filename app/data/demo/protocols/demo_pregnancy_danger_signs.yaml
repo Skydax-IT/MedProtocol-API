@@ -1,0 +1,12 @@
+protocol_id: demo_pregnancy_danger_signs
+title: Demo pregnancy danger signs protocol
+source_label: Demo only - not a medical source
+country_code: generic
+module: pregnancy_triage
+version: DEMO_DRAFT_NOT_VALIDATED
+status: draft
+validation_status: demo_only
+clinical_use_status: not_for_real_patient_care
+real_care_validation_status: not_validated_for_real_care
+effective_from: "2026-06-28"
+deprecated_at:

@@ -1,0 +1,40 @@
+- question_id: pregnancy_danger_bleeding
+  module: pregnancy_triage
+  priority: 100
+  applies_when:
+    patient_group: pregnant_person
+  text:
+    fr: "Y a-t-il un saignement sévère ?"
+  answer_type: yes_no
+  maps_to: clinical_inputs.danger_signs.severe_bleeding
+  clinical_use_status: not_for_real_patient_care
+- question_id: pregnancy_danger_convulsions
+  module: pregnancy_triage
+  priority: 99
+  applies_when:
+    patient_group: pregnant_person
+  text:
+    fr: "La personne enceinte a-t-elle eu des convulsions ?"
+  answer_type: yes_no
+  maps_to: clinical_inputs.danger_signs.convulsions
+  clinical_use_status: not_for_real_patient_care
+- question_id: pregnancy_danger_headache_vision
+  module: pregnancy_triage
+  priority: 98
+  applies_when:
+    patient_group: pregnant_person
+  text:
+    fr: "Y a-t-il des céphalées sévères ou des troubles visuels ?"
+  answer_type: yes_no
+  maps_to: clinical_inputs.danger_signs.severe_headache_or_visual_disturbance
+  clinical_use_status: not_for_real_patient_care
+- question_id: pregnancy_danger_abdominal_pain
+  module: pregnancy_triage
+  priority: 97
+  applies_when:
+    patient_group: pregnant_person
+  text:
+    fr: "Y a-t-il une douleur abdominale sévère ?"
+  answer_type: yes_no
+  maps_to: clinical_inputs.danger_signs.severe_abdominal_pain
+  clinical_use_status: not_for_real_patient_care

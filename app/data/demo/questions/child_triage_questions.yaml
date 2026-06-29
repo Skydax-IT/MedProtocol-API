@@ -1,0 +1,30 @@
+- question_id: child_danger_lethargy
+  module: child_triage
+  priority: 100
+  applies_when:
+    patient_group: child_0_59_months
+  text:
+    fr: "L'enfant est-il léthargique, inconscient ou anormalement difficile à réveiller ?"
+  answer_type: yes_no
+  maps_to: clinical_inputs.danger_signs.lethargy_or_unconscious
+  clinical_use_status: not_for_real_patient_care
+- question_id: child_danger_convulsions
+  module: child_triage
+  priority: 99
+  applies_when:
+    patient_group: child_0_59_months
+  text:
+    fr: "L'enfant a-t-il eu des convulsions ?"
+  answer_type: yes_no
+  maps_to: clinical_inputs.danger_signs.convulsions
+  clinical_use_status: not_for_real_patient_care
+- question_id: child_danger_unable_drink
+  module: child_triage
+  priority: 98
+  applies_when:
+    patient_group: child_0_59_months
+  text:
+    fr: "L'enfant est-il incapable de boire ou de téter ?"
+  answer_type: yes_no
+  maps_to: clinical_inputs.danger_signs.unable_to_drink_or_breastfeed
+  clinical_use_status: not_for_real_patient_care

@@ -1,0 +1,45 @@
+{
+  "audit_id": "aud_example",
+  "urgency_level": "urgent_referral",
+  "referral_required": true,
+  "immediate_action": {
+    "category": "urgent_referral",
+    "label": "Référence urgente recommandée",
+    "text": "Référer immédiatement vers une structure de santé appropriée selon le circuit local."
+  },
+  "reason": "Signes de danger de démonstration détectés : léthargie/inconscience, incapacité à boire/téter.",
+  "danger_signs_detected": [
+    "lethargy_or_unconscious",
+    "unable_to_drink_or_breastfeed"
+  ],
+  "possible_suspicions": [
+    "Situation potentiellement grave à évaluer — démo, pas un diagnostic."
+  ],
+  "missing_critical_data": [
+    "weight_kg",
+    "respiratory_rate"
+  ],
+  "actions_to_avoid": [
+    "Ne pas présenter cette sortie comme un diagnostic.",
+    "Ne pas prescrire de médicament ou dosage à partir de cette démonstration.",
+    "Ne pas retarder une référence urgente pour compléter des données non disponibles."
+  ],
+  "short_message": "DEMO URGENCE: signes de danger. Référence urgente recommandée. Non validé pour soins réels.",
+  "explanation_for_worker": "Ces signes de démonstration sont traités comme des signaux d'alerte. Le moteur recommande une référence urgente par sécurité.",
+  "source": {
+    "protocol_id": "demo_child_danger_signs",
+    "protocol_version": "DEMO_DRAFT_NOT_VALIDATED",
+    "rule_ids": [
+      "demo_child_danger_001"
+    ],
+    "validation_status": "demo_only",
+    "clinical_use_status": "not_for_real_patient_care",
+    "real_care_validation_status": "not_validated_for_real_care"
+  },
+  "meta": {
+    "request_id": "req_example",
+    "tenant_id": "tenant_demo_uuid",
+    "api_version": "v1",
+    "clinical_use_status": "not_for_real_patient_care"
+  }
+}

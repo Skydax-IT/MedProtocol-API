@@ -1,0 +1,16 @@
+role: doctor
+display_name: Médecin
+allowed_action_categories:
+  - identify_danger_signs
+  - recommend_referral
+  - ask_missing_questions
+  - provide_simple_explanation
+forbidden_action_categories:
+  - prescription
+  - dosage
+  - invasive_procedure
+output_constraints:
+  max_sms_chars: 220
+  avoid_terms:
+    - diagnostic certain
+    - traitement définitif
