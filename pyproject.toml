@@ -1,7 +1,6 @@
 [project]
-name = "medprotocol-api"
-version = "0.1.0"
-description = "Demo-only deterministic clinical triage protocol API."
+name = "deterministic-triage-api"version = "0.1.0"
+description = "Demo-only deterministic triage protocol API."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
